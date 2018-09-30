@@ -110,6 +110,7 @@ int main(int argc,char *argv[])
         perror("getprotobyname");
         exit(1);
     }
+    // setuid(getpid());
     // need root to create socket
     if((sockfd = socket(AF_INET, SOCK_RAW, protocol->p_proto)) < 0){
             perror("socket error");
