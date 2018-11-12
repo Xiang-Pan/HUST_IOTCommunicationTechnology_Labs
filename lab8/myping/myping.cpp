@@ -1,9 +1,9 @@
-/* FileName:myping.cpp
- * Author:Hover
- * E-Mail:hover@hust.edu.cn
- * GitHub:HoverWings
- * Description:the Hover's impletation of ping 
- * Attention: you may need sudo to run this code
+/* FileName:    myping.cpp
+ * Author:      Hover
+ * E-Mail:      hover@hust.edu.cn
+ * GitHub:      HoverWings
+ * Description: the Hover's impletation of ping 
+ * Attention:   you may need sudo to run this code
  */
 #include <cstdio>
 #include <iostream>

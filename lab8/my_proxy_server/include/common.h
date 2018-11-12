@@ -6,7 +6,7 @@
  */
 
 #ifndef _COMMON_H
-#define _COMMON_H 1
+#define _COMMON_H 
 
 #include <boost/asio.hpp>
 #include <boost/shared_ptr.hpp>

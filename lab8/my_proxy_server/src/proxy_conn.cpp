@@ -7,11 +7,6 @@
 
 #include "proxy_conn.hpp"
 
-/** 
- * 
- * 
- * @param io_service 
- */
 connection::connection(ba::io_service& io_service) : io_service_(io_service),
 													 bsocket_(io_service),
 													 ssocket_(io_service),
@@ -23,10 +18,9 @@ connection::connection(ba::io_service& io_service) : io_service_(io_service),
 	fHeaders.reserve(8192);
 }
 
-/** 
- * Start read data of request from browser
- * 
- */
+/*
+D:	Start read data of request from browser
+*/
 void connection::start() 
 {
  	std::cout << "start" << std::endl;
@@ -37,22 +31,25 @@ void connection::start()
 }
 
 /** 
- * Read header of HTTP request from browser
- * 
- * @param err 
- * @param len 
- */
+I:	err 
+	len 
+D:	Read header of HTTP request from browser
+*/
 void connection::handle_browser_read_headers(const bs::error_code& err, size_t len) 
 {
 //  	std::cout << "handle_browser_read_headers. Error: " << err << ", len=" << len << std::endl;
 	if(!err) 
 	{
 		if(fHeaders.empty())
+		{
 			fHeaders=std::string(bbuffer.data(),len);
+		}
 		else
+		{
 			fHeaders+=std::string(bbuffer.data(),len);
-		if(fHeaders.find("\r\n\r\n") == std::string::npos) 
-		{ // going to read rest of headers
+		}
+		if(fHeaders.find("\r\n\r\n") == std::string::npos) // going to read rest of headers
+		{ 
 			std::cout << fHeaders << std::endl;
 			async_read(bsocket_, ba::buffer(bbuffer), ba::transfer_at_least(1),
 					   boost::bind(&connection::handle_browser_read_headers,
@@ -60,35 +57,35 @@ void connection::handle_browser_read_headers(const bs::error_code& err, size_t l
 								   ba::placeholders::error,
 								   ba::placeholders::bytes_transferred));
 		}
-		else
-		{ 	// analyze headers
+		else	// analyze headers
+		{ 	
 			//std::cout << "fHeaders:\n" << fHeaders << std::endl;
 			std::string::size_type idx=fHeaders.find("\r\n");
 			std::string reqString=fHeaders.substr(0,idx);
 			fHeaders.erase(0,idx+2);
-
 			idx=reqString.find(" ");
-			if(idx == std::string::npos) {
+			if(idx == std::string::npos) 
+			{
 				std::cout << "Bad first line: " << reqString << std::endl;
 				return;
 			}
-			
 			fMethod=reqString.substr(0,idx);
 			reqString=reqString.substr(idx+1);
 			idx=reqString.find(" ");
-			if(idx == std::string::npos) {
+			if(idx == std::string::npos) 
+			{
 				std::cout << "Bad first line of request: " << reqString << std::endl;
 				return;
 			}
 			fURL=reqString.substr(0,idx);
 			fReqVersion=reqString.substr(idx+1);
 			idx=fReqVersion.find("/");
-			if(idx == std::string::npos) {
+			if(idx == std::string::npos) 
+			{
 				std::cout << "Bad first line of request: " << reqString << std::endl;
 				return;
 			}
 			fReqVersion=fReqVersion.substr(idx+1);
-			
 			// string outputs to console completely, even when using multithreading
 			std::cout << std::string("\n fMethod: " + fMethod + ", fURL: " + fURL + ", fReqVersion: " + fReqVersion + "\n");
 			// analyze headers, etc
@@ -292,49 +289,56 @@ void connection::handle_server_read_headers(const bs::error_code& err, size_t le
 										ba::placeholders::error,
 										ba::placeholders::bytes_transferred));
 		}
-	} else {
+	} 
+	else 
+	{
 		shutdown();
 	}
 }
 
 /** 
- * Writing data to the browser, are recieved from web-server
- * 
- * @param err 
- * @param len 
+I:	err 
+	len 
+D;	Writing data to the browser, are recieved from web-server
  */
 void connection::handle_browser_write(const bs::error_code& err, size_t len) {
 //   	std::cout << "handle_browser_write. Error: " << err << " " << err.message()
 //  			  << ", len=" << len << std::endl;
-	if(!err) {
+	if(!err) 
+	{
 		if(!proxy_closed && (RespLen == -1 || RespReaded < RespLen))
 			async_read(ssocket_, ba::buffer(sbuffer,len), ba::transfer_at_least(1),
 					   boost::bind(&connection::handle_server_read_body,
 								   shared_from_this(),
 								   ba::placeholders::error,
 								   ba::placeholders::bytes_transferred));
-		else {
+		else
+		{
 //			shutdown();
- 			if(isPersistent && !proxy_closed) {
+ 			if(isPersistent && !proxy_closed)
+			 {
   				std::cout << "Starting read headers from browser, as connection is persistent" << std::endl;
   				start();
  			}
 		}
-	} else {
+	} 
+	else 
+	{
 		shutdown();
 	}
 }
 
-/** 
- * Reading data from a Web server, for the writing them to the browser
- * 
- * @param err 
- * @param len 
- */
-void connection::handle_server_read_body(const bs::error_code& err, size_t len) {
+/*
+I:	err 
+	len 
+D:	Reading data from a Web server, for the writing them to the browser
+*/
+void connection::handle_server_read_body(const bs::error_code& err, size_t len)
+{
 //   	std::cout << "handle_server_read_body. Error: " << err << " " << err.message()
 //  			  << ", len=" << len << std::endl;
-	if(!err || err == ba::error::eof) {
+	if(!err || err == ba::error::eof) 
+	{
 		RespReaded+=len;
 // 		std::cout << "len=" << len << " resp_readed=" << RespReaded << " RespLen=" << RespLen<< std::endl;
 		if(err == ba::error::eof)
@@ -344,26 +348,30 @@ void connection::handle_server_read_body(const bs::error_code& err, size_t len) 
 									shared_from_this(),
 									ba::placeholders::error,
 									ba::placeholders::bytes_transferred));
-	} else {
+	} 
+	else 
+	{
 		shutdown();
 	}
 }
 
 /** 
- * Close both sockets: for browser and web-server
- * 
+D:	Close both sockets: for browser and web-server
  */
-void connection::shutdown() {
+void connection::shutdown()
+{
 	ssocket_.close();
 	bsocket_.close();
 }
 
 
-void connection::parseHeaders(const std::string& h, headersMap& hm) {
+void connection::parseHeaders(const std::string& h, headersMap& hm) 
+{
 	std::string str(h);
 	std::string::size_type idx;
 	std::string t;
-	while((idx=str.find("\r\n")) != std::string::npos) {
+	while((idx=str.find("\r\n")) != std::string::npos)
+	{
 		t=str.substr(0,idx);
 		str.erase(0,idx+2);
 		if(t == "")
