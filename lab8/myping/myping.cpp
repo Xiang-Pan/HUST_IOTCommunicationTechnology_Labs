@@ -190,7 +190,7 @@ unsigned short cal_chksum(unsigned short *addr,int len)
     if(nleft == 1)
     {
             *(unsigned char *)(&answer) = *(unsigned char *)w;
-            sum += answer;    /* 这里将 answer 转换成 int 整数 */
+            sum += answer;                  //transfer answer to int 
     }
     sum = (sum >> 16) + (sum & 0xffff);     // add high bit and low bit
     sum += (sum >> 16);                     // add overflow
@@ -218,8 +218,8 @@ int pack(int pack_no)
     icmp->icmp_id = pid;            
     packsize = 8 + datalen;         //64=8(head)+56
 
-    tval = (struct timeval *)icmp->icmp_data;    /* 获得icmp结构中最后的数据部分的指针 */
-    gettimeofday(tval, NULL); /* 将发送的时间填入icmp结构中最后的数据部分 */
+    tval = (struct timeval *)icmp->icmp_data;    // 获得icmp结构中最后的数据部分的指针 
+    gettimeofday(tval, NULL);                    // 将发送的时间填入icmp结构中最后的数据部分 
 
     icmp->icmp_cksum = cal_chksum((unsigned short *)icmp, packsize);/*填充发送方的校验和*/
 
@@ -298,7 +298,7 @@ int unpack(char *buf, int len)
         {
                 tvsend = (struct timeval *)icmp->icmp_data;
                 timediff(&tvrecv, tvsend);   
-                rtt = tvrecv.tv_sec * 1000 + tvrecv.tv_usec / 1000;
+                rtt = tvrecv.tv_sec * 1000.0 + tvrecv.tv_usec / 1000.0;
                 rtt_vec.push_back(rtt);
                 printf("%d byte from %s: icmp_seq=%u ttl=%d time=%.3f ms\n",
                         len,                                // total message len
