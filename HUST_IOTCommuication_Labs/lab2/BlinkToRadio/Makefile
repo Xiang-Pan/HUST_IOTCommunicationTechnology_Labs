@@ -1,6 +1,0 @@
-COMPONENT=BlinkToRadioAppC
-PELAGS += -DCC2420_DEF_CHANNEL = 26
-
-include $(MAKERULES)
-
-
