@@ -246,12 +246,12 @@ typedef int32_t ufs_daddr_t;
 typedef int32_t ufs_time_t;
 typedef u_int32_t uid_t;
 # 41 "/usr/lib/gcc/msp430/4.6.3/../../../../msp430/include/string.h" 3
-extern int memcmp(const void *arg_0x7f41b3357250, const void *arg_0x7f41b3357550, size_t arg_0x7f41b3357810);
-extern void *memcpy(void *arg_0x7f41b3356110, const void *arg_0x7f41b3356410, size_t arg_0x7f41b33566d0);
+extern int memcmp(const void *arg_0x7f3dd23ea250, const void *arg_0x7f3dd23ea550, size_t arg_0x7f3dd23ea810);
+extern void *memcpy(void *arg_0x7f3dd23e9110, const void *arg_0x7f3dd23e9410, size_t arg_0x7f3dd23e96d0);
 
-extern void *memset(void *arg_0x7f41b3353020, int arg_0x7f41b33532a0, size_t arg_0x7f41b3353560);
+extern void *memset(void *arg_0x7f3dd23e6020, int arg_0x7f3dd23e62a0, size_t arg_0x7f3dd23e6560);
 #line 65
-extern void *memset(void *arg_0x7f41b333b060, int arg_0x7f41b333b2e0, size_t arg_0x7f41b333b5a0);
+extern void *memset(void *arg_0x7f3dd23ce060, int arg_0x7f3dd23ce2e0, size_t arg_0x7f3dd23ce5a0);
 # 62 "/usr/lib/gcc/msp430/4.6.3/../../../../msp430/include/stdlib.h" 3
 #line 59
 typedef struct __nesc_unnamed4242 {
@@ -406,7 +406,7 @@ struct _reent {
 
   int __sdidinit;
 
-  void (*__cleanup)(struct _reent *arg_0x7f41b32fc170);
+  void (*__cleanup)(struct _reent *arg_0x7f3dd238f170);
 
 
   struct _Bigint *_result;
@@ -446,7 +446,7 @@ struct _reent {
   struct _atexit _atexit0;
 
 
-  void (**_sig_func)(int arg_0x7f41b32f7480);
+  void (**_sig_func)(int arg_0x7f3dd238a480);
 
 
 
@@ -789,15 +789,20 @@ typedef struct __nesc_unnamed4256 {
 TMicro;
 # 6 "BlinkToRadio.h"
 enum __nesc_unnamed4257 {
+
   AM_BLINKTORADIO = 6, 
-  TIMER_PERIOD_MILLI = 1000
+  TIMER_PERIOD_MILLI = 1000, 
+  NODE_ID_1 = 11, 
+  NODE_ID_2 = 12
 };
 
 
 
 
-#line 11
+
+#line 14
 typedef nx_struct BlinkToRadioMsg {
+
   nx_uint16_t nodeid;
   nx_uint16_t counter;
 } __attribute__((packed)) BlinkToRadioMsg;
@@ -1915,7 +1920,7 @@ static void /*Msp430TimerC.Msp430TimerA*/Msp430TimerP__0__VectorTimerX1__fired(v
 #line 39
 static void /*Msp430TimerC.Msp430TimerA*/Msp430TimerP__0__Event__default__fired(
 # 51 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430TimerP.nc"
-uint8_t arg_0x7f41b2d158b0);
+uint8_t arg_0x7f3dd1da78b0);
 # 45 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430Timer.nc"
 static uint16_t /*Msp430TimerC.Msp430TimerA*/Msp430TimerP__0__Timer__get(void );
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430TimerEvent.nc"
@@ -1927,7 +1932,7 @@ static void /*Msp430TimerC.Msp430TimerB*/Msp430TimerP__1__VectorTimerX1__fired(v
 #line 39
 static void /*Msp430TimerC.Msp430TimerB*/Msp430TimerP__1__Event__default__fired(
 # 51 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430TimerP.nc"
-uint8_t arg_0x7f41b2d158b0);
+uint8_t arg_0x7f3dd1da78b0);
 # 45 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430Timer.nc"
 static uint16_t /*Msp430TimerC.Msp430TimerB*/Msp430TimerP__1__Timer__get(void );
 static bool /*Msp430TimerC.Msp430TimerB*/Msp430TimerP__1__Timer__isOverflowPending(void );
@@ -2101,11 +2106,11 @@ static void McuSleepC__McuSleep__sleep(void );
 # 67 "/home/hover/tinyos-main/tos/interfaces/TaskBasic.nc"
 static error_t SchedulerBasicP__TaskBasic__postTask(
 # 56 "/home/hover/tinyos-main/tos/system/SchedulerBasicP.nc"
-uint8_t arg_0x7f41b2e10e60);
+uint8_t arg_0x7f3dd1ea3e60);
 # 75 "/home/hover/tinyos-main/tos/interfaces/TaskBasic.nc"
 static void SchedulerBasicP__TaskBasic__default__runTask(
 # 56 "/home/hover/tinyos-main/tos/system/SchedulerBasicP.nc"
-uint8_t arg_0x7f41b2e10e60);
+uint8_t arg_0x7f3dd1ea3e60);
 # 57 "/home/hover/tinyos-main/tos/interfaces/Scheduler.nc"
 static void SchedulerBasicP__Scheduler__init(void );
 #line 72
@@ -2390,12 +2395,12 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__TimerFrom__f
 #line 83
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__default__fired(
 # 48 "/home/hover/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x7f41b2788020);
-# 73 "/home/hover/tinyos-main/tos/lib/timer/Timer.nc"
-static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__startOneShot(
+uint8_t arg_0x7f3dd1822020);
+# 64 "/home/hover/tinyos-main/tos/lib/timer/Timer.nc"
+static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__startPeriodic(
 # 48 "/home/hover/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x7f41b2788020, 
-# 73 "/home/hover/tinyos-main/tos/lib/timer/Timer.nc"
+uint8_t arg_0x7f3dd1822020, 
+# 64 "/home/hover/tinyos-main/tos/lib/timer/Timer.nc"
 uint32_t dt);
 # 82 "/home/hover/tinyos-main/tos/lib/timer/Counter.nc"
 static void /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC__0__Counter__overflow(void );
@@ -2673,31 +2678,31 @@ error_t error);
 # 62 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 static error_t CC2420SpiP__Fifo__continueRead(
 # 46 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2376a00, 
+uint8_t arg_0x7f3dd1410a00, 
 # 62 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length);
 #line 91
 static void CC2420SpiP__Fifo__default__writeDone(
 # 46 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2376a00, 
+uint8_t arg_0x7f3dd1410a00, 
 # 91 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length, error_t error);
 #line 82
 static cc2420_status_t CC2420SpiP__Fifo__write(
 # 46 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2376a00, 
+uint8_t arg_0x7f3dd1410a00, 
 # 82 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length);
 #line 51
 static cc2420_status_t CC2420SpiP__Fifo__beginRead(
 # 46 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2376a00, 
+uint8_t arg_0x7f3dd1410a00, 
 # 51 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length);
 #line 71
 static void CC2420SpiP__Fifo__default__readDone(
 # 46 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2376a00, 
+uint8_t arg_0x7f3dd1410a00, 
 # 71 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length, error_t error);
 # 31 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/ChipSpiResource.nc"
@@ -2715,13 +2720,13 @@ static void CC2420SpiP__SpiResource__granted(void );
 # 63 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Ram.nc"
 static cc2420_status_t CC2420SpiP__Ram__write(
 # 47 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint16_t arg_0x7f41b2375d10, 
+uint16_t arg_0x7f3dd140ed10, 
 # 63 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Ram.nc"
 uint8_t offset, uint8_t * data, uint8_t length);
 # 55 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Register.nc"
 static cc2420_status_t CC2420SpiP__Reg__read(
 # 48 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2373c00, 
+uint8_t arg_0x7f3dd140dc00, 
 # 55 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Register.nc"
 uint16_t *data);
 
@@ -2733,55 +2738,55 @@ uint16_t *data);
 
 static cc2420_status_t CC2420SpiP__Reg__write(
 # 48 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2373c00, 
+uint8_t arg_0x7f3dd140dc00, 
 # 63 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Register.nc"
 uint16_t data);
 # 120 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t CC2420SpiP__Resource__release(
 # 45 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2377660);
+uint8_t arg_0x7f3dd1411660);
 # 97 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t CC2420SpiP__Resource__immediateRequest(
 # 45 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2377660);
+uint8_t arg_0x7f3dd1411660);
 # 88 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t CC2420SpiP__Resource__request(
 # 45 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2377660);
+uint8_t arg_0x7f3dd1411660);
 # 102 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static void CC2420SpiP__Resource__default__granted(
 # 45 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2377660);
+uint8_t arg_0x7f3dd1411660);
 # 128 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static bool CC2420SpiP__Resource__isOwner(
 # 45 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2377660);
+uint8_t arg_0x7f3dd1411660);
 # 75 "/home/hover/tinyos-main/tos/interfaces/TaskBasic.nc"
 static void CC2420SpiP__grant__runTask(void );
 # 53 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Strobe.nc"
 static cc2420_status_t CC2420SpiP__Strobe__strobe(
 # 49 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b23729f0);
+uint8_t arg_0x7f3dd140c9f0);
 # 62 "/home/hover/tinyos-main/tos/interfaces/Init.nc"
 static error_t StateImplP__Init__init(void );
 # 56 "/home/hover/tinyos-main/tos/interfaces/State.nc"
 static void StateImplP__State__toIdle(
 # 67 "/home/hover/tinyos-main/tos/system/StateImplP.nc"
-uint8_t arg_0x7f41b22fd9c0);
+uint8_t arg_0x7f3dd13979c0);
 # 66 "/home/hover/tinyos-main/tos/interfaces/State.nc"
 static bool StateImplP__State__isState(
 # 67 "/home/hover/tinyos-main/tos/system/StateImplP.nc"
-uint8_t arg_0x7f41b22fd9c0, 
+uint8_t arg_0x7f3dd13979c0, 
 # 66 "/home/hover/tinyos-main/tos/interfaces/State.nc"
 uint8_t myState);
 #line 61
 static bool StateImplP__State__isIdle(
 # 67 "/home/hover/tinyos-main/tos/system/StateImplP.nc"
-uint8_t arg_0x7f41b22fd9c0);
+uint8_t arg_0x7f3dd13979c0);
 # 45 "/home/hover/tinyos-main/tos/interfaces/State.nc"
 static error_t StateImplP__State__requestState(
 # 67 "/home/hover/tinyos-main/tos/system/StateImplP.nc"
-uint8_t arg_0x7f41b22fd9c0, 
+uint8_t arg_0x7f3dd13979c0, 
 # 45 "/home/hover/tinyos-main/tos/interfaces/State.nc"
 uint8_t reqState);
 
@@ -2791,21 +2796,21 @@ uint8_t reqState);
 
 static void StateImplP__State__forceState(
 # 67 "/home/hover/tinyos-main/tos/system/StateImplP.nc"
-uint8_t arg_0x7f41b22fd9c0, 
+uint8_t arg_0x7f3dd13979c0, 
 # 51 "/home/hover/tinyos-main/tos/interfaces/State.nc"
 uint8_t reqState);
 # 65 "/home/hover/tinyos-main/tos/interfaces/ResourceConfigure.nc"
 static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__ResourceConfigure__unconfigure(
 # 76 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b2271110);
+uint8_t arg_0x7f3dd130b110);
 # 59 "/home/hover/tinyos-main/tos/interfaces/ResourceConfigure.nc"
 static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__ResourceConfigure__configure(
 # 76 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b2271110);
+uint8_t arg_0x7f3dd130b110);
 # 76 "/home/hover/tinyos-main/tos/interfaces/SpiPacket.nc"
 static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__SpiPacket__send(
 # 79 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226f060, 
+uint8_t arg_0x7f3dd1308060, 
 # 65 "/home/hover/tinyos-main/tos/interfaces/SpiPacket.nc"
 uint8_t * txBuf, 
 
@@ -2822,7 +2827,7 @@ uint16_t len);
 #line 88
 static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__SpiPacket__default__sendDone(
 # 79 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226f060, 
+uint8_t arg_0x7f3dd1308060, 
 # 81 "/home/hover/tinyos-main/tos/interfaces/SpiPacket.nc"
 uint8_t * txBuf, 
 uint8_t * rxBuf, 
@@ -2836,49 +2841,49 @@ error_t error);
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiConfigure.nc"
 static msp430_spi_union_config_t */*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Msp430SpiConfigure__default__getConfig(
 # 82 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226c110);
+uint8_t arg_0x7f3dd1306110);
 # 45 "/home/hover/tinyos-main/tos/interfaces/SpiByte.nc"
 static uint8_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__SpiByte__write(uint8_t tx);
 # 120 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__default__release(
 # 81 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226fe70);
+uint8_t arg_0x7f3dd1308e70);
 # 97 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__default__immediateRequest(
 # 81 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226fe70);
+uint8_t arg_0x7f3dd1308e70);
 # 88 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__default__request(
 # 81 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226fe70);
+uint8_t arg_0x7f3dd1308e70);
 # 102 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__granted(
 # 81 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226fe70);
+uint8_t arg_0x7f3dd1308e70);
 # 128 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static bool /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__default__isOwner(
 # 81 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226fe70);
+uint8_t arg_0x7f3dd1308e70);
 # 120 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Resource__release(
 # 75 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b2278e30);
+uint8_t arg_0x7f3dd1311e30);
 # 97 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Resource__immediateRequest(
 # 75 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b2278e30);
+uint8_t arg_0x7f3dd1311e30);
 # 88 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Resource__request(
 # 75 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b2278e30);
+uint8_t arg_0x7f3dd1311e30);
 # 102 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Resource__default__granted(
 # 75 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b2278e30);
+uint8_t arg_0x7f3dd1311e30);
 # 128 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static bool /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Resource__isOwner(
 # 75 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b2278e30);
+uint8_t arg_0x7f3dd1311e30);
 # 54 "/home/hover/tinyos-main/tos/chips/msp430/usart/HplMsp430UsartInterrupts.nc"
 static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartInterrupts__rxDone(uint8_t data);
 #line 49
@@ -2918,19 +2923,19 @@ static void HplMsp430Usart0P__Usart__disableSpi(void );
 # 54 "/home/hover/tinyos-main/tos/chips/msp430/usart/HplMsp430UsartInterrupts.nc"
 static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Interrupts__default__rxDone(
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430UsartShareP.nc"
-uint8_t arg_0x7f41b2101cd0, 
+uint8_t arg_0x7f3dd119bcd0, 
 # 54 "/home/hover/tinyos-main/tos/chips/msp430/usart/HplMsp430UsartInterrupts.nc"
 uint8_t data);
 #line 49
 static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Interrupts__default__txDone(
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430UsartShareP.nc"
-uint8_t arg_0x7f41b2101cd0);
+uint8_t arg_0x7f3dd119bcd0);
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/usart/HplMsp430I2CInterrupts.nc"
 static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__RawI2CInterrupts__fired(void );
 #line 39
 static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__I2CInterrupts__default__fired(
 # 40 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430UsartShareP.nc"
-uint8_t arg_0x7f41b2100b80);
+uint8_t arg_0x7f3dd119ab80);
 # 54 "/home/hover/tinyos-main/tos/chips/msp430/usart/HplMsp430UsartInterrupts.nc"
 static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__RawInterrupts__rxDone(uint8_t data);
 #line 49
@@ -2961,19 +2966,19 @@ static resource_client_id_t /*Msp430UsartShare0P.ArbiterC.Queue*/FcfsResourceQue
 # 53 "/home/hover/tinyos-main/tos/interfaces/ResourceRequested.nc"
 static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceRequested__default__requested(
 # 55 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20c0840);
+uint8_t arg_0x7f3dd115a840);
 # 61 "/home/hover/tinyos-main/tos/interfaces/ResourceRequested.nc"
 static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceRequested__default__immediateRequested(
 # 55 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20c0840);
+uint8_t arg_0x7f3dd115a840);
 # 65 "/home/hover/tinyos-main/tos/interfaces/ResourceConfigure.nc"
 static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceConfigure__default__unconfigure(
 # 60 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20bec40);
+uint8_t arg_0x7f3dd1157c40);
 # 59 "/home/hover/tinyos-main/tos/interfaces/ResourceConfigure.nc"
 static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceConfigure__default__configure(
 # 60 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20bec40);
+uint8_t arg_0x7f3dd1157c40);
 # 56 "/home/hover/tinyos-main/tos/interfaces/ResourceDefaultOwner.nc"
 static error_t /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceDefaultOwner__release(void );
 #line 73
@@ -2985,23 +2990,23 @@ static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceDefaultO
 # 120 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__Resource__release(
 # 54 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20c14b0);
+uint8_t arg_0x7f3dd115b4b0);
 # 97 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__Resource__immediateRequest(
 # 54 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20c14b0);
+uint8_t arg_0x7f3dd115b4b0);
 # 88 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__Resource__request(
 # 54 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20c14b0);
+uint8_t arg_0x7f3dd115b4b0);
 # 102 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__Resource__default__granted(
 # 54 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20c14b0);
+uint8_t arg_0x7f3dd115b4b0);
 # 128 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static bool /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__Resource__isOwner(
 # 54 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20c14b0);
+uint8_t arg_0x7f3dd115b4b0);
 # 90 "/home/hover/tinyos-main/tos/interfaces/ArbiterInfo.nc"
 static bool /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ArbiterInfo__inUse(void );
 
@@ -3304,19 +3309,19 @@ uint8_t len);
 # 120 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t CC2420TinyosNetworkP__Resource__release(
 # 46 "/home/hover/tinyos-main/tos/chips/cc2420/lowpan/CC2420TinyosNetworkP.nc"
-uint8_t arg_0x7f41b1b86600);
+uint8_t arg_0x7f3dd0c20600);
 # 97 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t CC2420TinyosNetworkP__Resource__immediateRequest(
 # 46 "/home/hover/tinyos-main/tos/chips/cc2420/lowpan/CC2420TinyosNetworkP.nc"
-uint8_t arg_0x7f41b1b86600);
+uint8_t arg_0x7f3dd0c20600);
 # 88 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t CC2420TinyosNetworkP__Resource__request(
 # 46 "/home/hover/tinyos-main/tos/chips/cc2420/lowpan/CC2420TinyosNetworkP.nc"
-uint8_t arg_0x7f41b1b86600);
+uint8_t arg_0x7f3dd0c20600);
 # 102 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static void CC2420TinyosNetworkP__Resource__default__granted(
 # 46 "/home/hover/tinyos-main/tos/chips/cc2420/lowpan/CC2420TinyosNetworkP.nc"
-uint8_t arg_0x7f41b1b86600);
+uint8_t arg_0x7f3dd0c20600);
 # 125 "/home/hover/tinyos-main/tos/interfaces/Send.nc"
 static 
 #line 123
@@ -3389,13 +3394,13 @@ static void CC2420ActiveMessageP__CC2420Config__syncDone(error_t error);
 # 95 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 static void CC2420ActiveMessageP__RadioBackoff__default__requestCca(
 # 54 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1aef700, 
+am_id_t arg_0x7f3dd0b89700, 
 # 95 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 message_t * msg);
 #line 81
 static void CC2420ActiveMessageP__RadioBackoff__default__requestInitialBackoff(
 # 54 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1aef700, 
+am_id_t arg_0x7f3dd0b89700, 
 # 81 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 message_t * msg);
 
@@ -3406,13 +3411,13 @@ message_t * msg);
 
 static void CC2420ActiveMessageP__RadioBackoff__default__requestCongestionBackoff(
 # 54 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1aef700, 
+am_id_t arg_0x7f3dd0b89700, 
 # 88 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 message_t * msg);
 # 59 "/home/hover/tinyos-main/tos/interfaces/SendNotifier.nc"
 static void CC2420ActiveMessageP__SendNotifier__default__aboutToSend(
 # 53 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1af0b30, 
+am_id_t arg_0x7f3dd0b8ab30, 
 # 59 "/home/hover/tinyos-main/tos/interfaces/SendNotifier.nc"
 am_addr_t dest, 
 #line 57
@@ -3459,7 +3464,7 @@ uint8_t len);
 # 80 "/home/hover/tinyos-main/tos/interfaces/AMSend.nc"
 static error_t CC2420ActiveMessageP__AMSend__send(
 # 48 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1af8cf0, 
+am_id_t arg_0x7f3dd0b91cf0, 
 # 80 "/home/hover/tinyos-main/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 71
@@ -3482,7 +3487,7 @@ message_t *
 
 CC2420ActiveMessageP__Snoop__default__receive(
 # 50 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1af3c40, 
+am_id_t arg_0x7f3dd0b8dc40, 
 # 71 "/home/hover/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -3501,7 +3506,7 @@ message_t *
 
 CC2420ActiveMessageP__Receive__default__receive(
 # 49 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1af3060, 
+am_id_t arg_0x7f3dd0b8d060, 
 # 71 "/home/hover/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -3575,7 +3580,7 @@ error_t error);
 # 110 "/home/hover/tinyos-main/tos/interfaces/AMSend.nc"
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__AMSend__sendDone(
 # 48 "/home/hover/tinyos-main/tos/system/AMQueueImplP.nc"
-am_id_t arg_0x7f41b1a2db60, 
+am_id_t arg_0x7f3dd0ac7b60, 
 # 103 "/home/hover/tinyos-main/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -3588,7 +3593,7 @@ error_t error);
 # 75 "/home/hover/tinyos-main/tos/interfaces/Send.nc"
 static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__Send__send(
 # 46 "/home/hover/tinyos-main/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x7f41b1a2e940, 
+uint8_t arg_0x7f3dd0ac8940, 
 # 67 "/home/hover/tinyos-main/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -3602,7 +3607,7 @@ uint8_t len);
 #line 100
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__Send__default__sendDone(
 # 46 "/home/hover/tinyos-main/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x7f41b1a2e940, 
+uint8_t arg_0x7f3dd0ac8940, 
 # 96 "/home/hover/tinyos-main/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -3717,7 +3722,7 @@ static inline error_t Msp430ClockP__Init__init(void );
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430TimerEvent.nc"
 static void /*Msp430TimerC.Msp430TimerA*/Msp430TimerP__0__Event__fired(
 # 51 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430TimerP.nc"
-uint8_t arg_0x7f41b2d158b0);
+uint8_t arg_0x7f3dd1da78b0);
 # 48 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430Timer.nc"
 static void /*Msp430TimerC.Msp430TimerA*/Msp430TimerP__0__Timer__overflow(void );
 # 62 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430TimerP.nc"
@@ -3747,7 +3752,7 @@ static inline void /*Msp430TimerC.Msp430TimerA*/Msp430TimerP__0__Event__default_
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430TimerEvent.nc"
 static void /*Msp430TimerC.Msp430TimerB*/Msp430TimerP__1__Event__fired(
 # 51 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430TimerP.nc"
-uint8_t arg_0x7f41b2d158b0);
+uint8_t arg_0x7f3dd1da78b0);
 # 48 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430Timer.nc"
 static void /*Msp430TimerC.Msp430TimerB*/Msp430TimerP__1__Timer__overflow(void );
 # 62 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430TimerP.nc"
@@ -4250,7 +4255,7 @@ int main(void )   ;
 # 75 "/home/hover/tinyos-main/tos/interfaces/TaskBasic.nc"
 static void SchedulerBasicP__TaskBasic__runTask(
 # 56 "/home/hover/tinyos-main/tos/system/SchedulerBasicP.nc"
-uint8_t arg_0x7f41b2e10e60);
+uint8_t arg_0x7f3dd1ea3e60);
 # 79 "/home/hover/tinyos-main/tos/interfaces/McuSleep.nc"
 static void SchedulerBasicP__McuSleep__sleep(void );
 # 61 "/home/hover/tinyos-main/tos/system/SchedulerBasicP.nc"
@@ -4509,8 +4514,8 @@ static inline void /*PlatformLedsC.Led2Impl*/Msp430GpioC__2__GeneralIO__clr(void
 
 
 static inline void /*PlatformLedsC.Led2Impl*/Msp430GpioC__2__GeneralIO__makeOutput(void );
-# 73 "/home/hover/tinyos-main/tos/lib/timer/Timer.nc"
-static void BlinkToRadioC__Timer0__startOneShot(uint32_t dt);
+# 64 "/home/hover/tinyos-main/tos/lib/timer/Timer.nc"
+static void BlinkToRadioC__Timer0__startPeriodic(uint32_t dt);
 # 104 "/home/hover/tinyos-main/tos/interfaces/SplitControl.nc"
 static error_t BlinkToRadioC__AMControl__start(void );
 # 126 "/home/hover/tinyos-main/tos/interfaces/Packet.nc"
@@ -4564,42 +4569,29 @@ static void BlinkToRadioC__Leds__led2Off(void );
 static void BlinkToRadioC__Leds__led0On(void );
 #line 89
 static void BlinkToRadioC__Leds__led2On(void );
-# 65 "BlinkToRadioC.nc"
-uint16_t BlinkToRadioC__aim_node = 1;
+# 68 "BlinkToRadioC.nc"
+uint16_t BlinkToRadioC__counter = 1;
 message_t BlinkToRadioC__pkt;
 bool BlinkToRadioC__busy = FALSE;
 
-static void BlinkToRadioC__setLeds(uint16_t val);
-#line 83
-static inline void BlinkToRadioC__LedsOff(void );
-
-
-
-
-
+static inline void BlinkToRadioC__setLeds(uint16_t val);
+#line 88
 static inline void BlinkToRadioC__Boot__booted(void );
 
 
 
+
 static inline void BlinkToRadioC__AMControl__startDone(error_t err);
-
-
-
-
-
+#line 105
 static inline void BlinkToRadioC__AMControl__stopDone(error_t err);
 
 
+
 static inline void BlinkToRadioC__Timer0__fired(void );
-
-
-
-
-
-
-
-
+#line 129
 static inline void BlinkToRadioC__AMSend__sendDone(message_t *msg, error_t err);
+
+
 
 
 
@@ -4813,7 +4805,7 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__TimerFrom__s
 
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__fired(
 # 48 "/home/hover/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x7f41b2788020);
+uint8_t arg_0x7f3dd1822020);
 #line 71
 enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0____nesc_unnamed4312 {
 #line 71
@@ -4859,9 +4851,17 @@ static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer
 
 
 
-static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__startTimer(uint8_t num, uint32_t t0, uint32_t dt, bool isoneshot);
-#line 159
-static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__startOneShot(uint8_t num, uint32_t dt);
+static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__startTimer(uint8_t num, uint32_t t0, uint32_t dt, bool isoneshot);
+
+
+
+
+
+
+
+
+
+static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__startPeriodic(uint8_t num, uint32_t dt);
 #line 204
 static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__default__fired(uint8_t num);
 # 58 "/home/hover/tinyos-main/tos/lib/timer/CounterToLocalTimeC.nc"
@@ -5715,13 +5715,13 @@ uint16_t len);
 # 91 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 static void CC2420SpiP__Fifo__writeDone(
 # 46 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2376a00, 
+uint8_t arg_0x7f3dd1410a00, 
 # 91 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length, error_t error);
 #line 71
 static void CC2420SpiP__Fifo__readDone(
 # 46 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2376a00, 
+uint8_t arg_0x7f3dd1410a00, 
 # 71 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
 uint8_t * data, uint8_t length, error_t error);
 # 24 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/ChipSpiResource.nc"
@@ -5748,7 +5748,7 @@ static bool CC2420SpiP__SpiResource__isOwner(void );
 #line 102
 static void CC2420SpiP__Resource__granted(
 # 45 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
-uint8_t arg_0x7f41b2377660);
+uint8_t arg_0x7f3dd1411660);
 # 67 "/home/hover/tinyos-main/tos/interfaces/TaskBasic.nc"
 static error_t CC2420SpiP__grant__postTask(void );
 # 88 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
@@ -5916,7 +5916,7 @@ static bool StateImplP__State__isState(uint8_t id, uint8_t myState);
 # 88 "/home/hover/tinyos-main/tos/interfaces/SpiPacket.nc"
 static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__SpiPacket__sendDone(
 # 79 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226f060, 
+uint8_t arg_0x7f3dd1308060, 
 # 81 "/home/hover/tinyos-main/tos/interfaces/SpiPacket.nc"
 uint8_t * txBuf, 
 uint8_t * rxBuf, 
@@ -5930,7 +5930,7 @@ error_t error);
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiConfigure.nc"
 static msp430_spi_union_config_t */*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Msp430SpiConfigure__getConfig(
 # 82 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226c110);
+uint8_t arg_0x7f3dd1306110);
 # 180 "/home/hover/tinyos-main/tos/chips/msp430/usart/HplMsp430Usart.nc"
 static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Usart__enableRxIntr(void );
 #line 197
@@ -5952,23 +5952,23 @@ static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Usart__disableSpi(void 
 # 120 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__release(
 # 81 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226fe70);
+uint8_t arg_0x7f3dd1308e70);
 # 97 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__immediateRequest(
 # 81 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226fe70);
+uint8_t arg_0x7f3dd1308e70);
 # 88 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__request(
 # 81 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226fe70);
+uint8_t arg_0x7f3dd1308e70);
 # 128 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static bool /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__isOwner(
 # 81 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b226fe70);
+uint8_t arg_0x7f3dd1308e70);
 # 102 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Resource__granted(
 # 75 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
-uint8_t arg_0x7f41b2278e30);
+uint8_t arg_0x7f3dd1311e30);
 # 67 "/home/hover/tinyos-main/tos/interfaces/TaskBasic.nc"
 static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__signalDone_task__postTask(void );
 # 102 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiNoDmaP.nc"
@@ -6198,17 +6198,17 @@ static uint8_t /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__ArbiterIn
 # 54 "/home/hover/tinyos-main/tos/chips/msp430/usart/HplMsp430UsartInterrupts.nc"
 static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Interrupts__rxDone(
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430UsartShareP.nc"
-uint8_t arg_0x7f41b2101cd0, 
+uint8_t arg_0x7f3dd119bcd0, 
 # 54 "/home/hover/tinyos-main/tos/chips/msp430/usart/HplMsp430UsartInterrupts.nc"
 uint8_t data);
 #line 49
 static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Interrupts__txDone(
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430UsartShareP.nc"
-uint8_t arg_0x7f41b2101cd0);
+uint8_t arg_0x7f3dd119bcd0);
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/usart/HplMsp430I2CInterrupts.nc"
 static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__I2CInterrupts__fired(
 # 40 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430UsartShareP.nc"
-uint8_t arg_0x7f41b2100b80);
+uint8_t arg_0x7f3dd119ab80);
 
 
 
@@ -6263,19 +6263,19 @@ static inline error_t /*Msp430UsartShare0P.ArbiterC.Queue*/FcfsResourceQueueC__1
 # 53 "/home/hover/tinyos-main/tos/interfaces/ResourceRequested.nc"
 static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceRequested__requested(
 # 55 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20c0840);
+uint8_t arg_0x7f3dd115a840);
 # 61 "/home/hover/tinyos-main/tos/interfaces/ResourceRequested.nc"
 static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceRequested__immediateRequested(
 # 55 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20c0840);
+uint8_t arg_0x7f3dd115a840);
 # 65 "/home/hover/tinyos-main/tos/interfaces/ResourceConfigure.nc"
 static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceConfigure__unconfigure(
 # 60 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20bec40);
+uint8_t arg_0x7f3dd1157c40);
 # 59 "/home/hover/tinyos-main/tos/interfaces/ResourceConfigure.nc"
 static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceConfigure__configure(
 # 60 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20bec40);
+uint8_t arg_0x7f3dd1157c40);
 # 79 "/home/hover/tinyos-main/tos/interfaces/ResourceQueue.nc"
 static error_t /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__Queue__enqueue(resource_client_id_t id);
 #line 53
@@ -6291,7 +6291,7 @@ static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceDefaultO
 # 102 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__Resource__granted(
 # 54 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
-uint8_t arg_0x7f41b20c14b0);
+uint8_t arg_0x7f3dd115b4b0);
 # 67 "/home/hover/tinyos-main/tos/interfaces/TaskBasic.nc"
 static error_t /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__grantedTask__postTask(void );
 # 75 "/home/hover/tinyos-main/tos/system/ArbiterP.nc"
@@ -7286,7 +7286,7 @@ uint8_t len);
 # 102 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
 static void CC2420TinyosNetworkP__Resource__granted(
 # 46 "/home/hover/tinyos-main/tos/chips/cc2420/lowpan/CC2420TinyosNetworkP.nc"
-uint8_t arg_0x7f41b1b86600);
+uint8_t arg_0x7f3dd0c20600);
 # 100 "/home/hover/tinyos-main/tos/interfaces/Send.nc"
 static void CC2420TinyosNetworkP__BareSend__sendDone(
 #line 96
@@ -7451,13 +7451,13 @@ static uint16_t CC2420ActiveMessageP__CC2420Config__getPanAddr(void );
 # 95 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 static void CC2420ActiveMessageP__RadioBackoff__requestCca(
 # 54 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1aef700, 
+am_id_t arg_0x7f3dd0b89700, 
 # 95 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 message_t * msg);
 #line 81
 static void CC2420ActiveMessageP__RadioBackoff__requestInitialBackoff(
 # 54 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1aef700, 
+am_id_t arg_0x7f3dd0b89700, 
 # 81 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 message_t * msg);
 
@@ -7468,13 +7468,13 @@ message_t * msg);
 
 static void CC2420ActiveMessageP__RadioBackoff__requestCongestionBackoff(
 # 54 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1aef700, 
+am_id_t arg_0x7f3dd0b89700, 
 # 88 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/RadioBackoff.nc"
 message_t * msg);
 # 59 "/home/hover/tinyos-main/tos/interfaces/SendNotifier.nc"
 static void CC2420ActiveMessageP__SendNotifier__aboutToSend(
 # 53 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1af0b30, 
+am_id_t arg_0x7f3dd0b8ab30, 
 # 59 "/home/hover/tinyos-main/tos/interfaces/SendNotifier.nc"
 am_addr_t dest, 
 #line 57
@@ -7482,7 +7482,7 @@ message_t * msg);
 # 110 "/home/hover/tinyos-main/tos/interfaces/AMSend.nc"
 static void CC2420ActiveMessageP__AMSend__sendDone(
 # 48 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1af8cf0, 
+am_id_t arg_0x7f3dd0b91cf0, 
 # 103 "/home/hover/tinyos-main/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -7501,7 +7501,7 @@ message_t *
 
 CC2420ActiveMessageP__Snoop__receive(
 # 50 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1af3c40, 
+am_id_t arg_0x7f3dd0b8dc40, 
 # 71 "/home/hover/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -7524,7 +7524,7 @@ message_t *
 
 CC2420ActiveMessageP__Receive__receive(
 # 49 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-am_id_t arg_0x7f41b1af3060, 
+am_id_t arg_0x7f3dd0b8d060, 
 # 71 "/home/hover/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -7710,7 +7710,7 @@ static inline void /*BlinkToRadioAppC.AMSenderC.SenderC.AMQueueEntryP*/AMQueueEn
 # 80 "/home/hover/tinyos-main/tos/interfaces/AMSend.nc"
 static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__AMSend__send(
 # 48 "/home/hover/tinyos-main/tos/system/AMQueueImplP.nc"
-am_id_t arg_0x7f41b1a2db60, 
+am_id_t arg_0x7f3dd0ac7b60, 
 # 80 "/home/hover/tinyos-main/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 71
@@ -7727,7 +7727,7 @@ uint8_t len);
 # 100 "/home/hover/tinyos-main/tos/interfaces/Send.nc"
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__Send__sendDone(
 # 46 "/home/hover/tinyos-main/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x7f41b1a2e940, 
+uint8_t arg_0x7f3dd0ac8940, 
 # 96 "/home/hover/tinyos-main/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -7872,9 +7872,9 @@ static inline void /*Msp430TimerC.Msp430TimerA*/Msp430TimerP__0__Event__default_
 }
 
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430TimerEvent.nc"
-inline static void /*Msp430TimerC.Msp430TimerA*/Msp430TimerP__0__Event__fired(uint8_t arg_0x7f41b2d158b0){
+inline static void /*Msp430TimerC.Msp430TimerA*/Msp430TimerP__0__Event__fired(uint8_t arg_0x7f3dd1da78b0){
 #line 39
-  switch (arg_0x7f41b2d158b0) {
+  switch (arg_0x7f3dd1da78b0) {
 #line 39
     case 0:
 #line 39
@@ -7902,7 +7902,7 @@ inline static void /*Msp430TimerC.Msp430TimerA*/Msp430TimerP__0__Event__fired(ui
 #line 39
     default:
 #line 39
-      /*Msp430TimerC.Msp430TimerA*/Msp430TimerP__0__Event__default__fired(arg_0x7f41b2d158b0);
+      /*Msp430TimerC.Msp430TimerA*/Msp430TimerP__0__Event__default__fired(arg_0x7f3dd1da78b0);
 #line 39
       break;
 #line 39
@@ -9602,9 +9602,9 @@ static inline void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceC
 }
 
 # 65 "/home/hover/tinyos-main/tos/interfaces/ResourceConfigure.nc"
-inline static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceConfigure__unconfigure(uint8_t arg_0x7f41b20bec40){
+inline static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceConfigure__unconfigure(uint8_t arg_0x7f3dd1157c40){
 #line 65
-  switch (arg_0x7f41b20bec40) {
+  switch (arg_0x7f3dd1157c40) {
 #line 65
     case /*CC2420SpiWireC.HplCC2420SpiC.SpiC.UsartC*/Msp430Usart0C__0__CLIENT_ID:
 #line 65
@@ -9614,7 +9614,7 @@ inline static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceC
 #line 65
     default:
 #line 65
-      /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceConfigure__default__unconfigure(arg_0x7f41b20bec40);
+      /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceConfigure__default__unconfigure(arg_0x7f3dd1157c40);
 #line 65
       break;
 #line 65
@@ -9765,13 +9765,13 @@ static inline error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource
 }
 
 # 120 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
-inline static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__release(uint8_t arg_0x7f41b226fe70){
+inline static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__release(uint8_t arg_0x7f3dd1308e70){
 #line 120
   unsigned char __nesc_result;
 #line 120
 
 #line 120
-  switch (arg_0x7f41b226fe70) {
+  switch (arg_0x7f3dd1308e70) {
 #line 120
     case /*CC2420SpiWireC.HplCC2420SpiC.SpiC*/Msp430Spi0C__0__CLIENT_ID:
 #line 120
@@ -9781,7 +9781,7 @@ inline static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource
 #line 120
     default:
 #line 120
-      __nesc_result = /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__default__release(arg_0x7f41b226fe70);
+      __nesc_result = /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__default__release(arg_0x7f3dd1308e70);
 #line 120
       break;
 #line 120
@@ -10337,9 +10337,9 @@ message_t *msg)
 }
 
 # 88 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/RadioBackoff.nc"
-inline static void CC2420ActiveMessageP__RadioBackoff__requestCongestionBackoff(am_id_t arg_0x7f41b1aef700, message_t * msg){
+inline static void CC2420ActiveMessageP__RadioBackoff__requestCongestionBackoff(am_id_t arg_0x7f3dd0b89700, message_t * msg){
 #line 88
-    CC2420ActiveMessageP__RadioBackoff__default__requestCongestionBackoff(arg_0x7f41b1aef700, msg);
+    CC2420ActiveMessageP__RadioBackoff__default__requestCongestionBackoff(arg_0x7f3dd0b89700, msg);
 #line 88
 }
 #line 88
@@ -10449,13 +10449,13 @@ static inline bool /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__d
 }
 
 # 128 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
-inline static bool /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__isOwner(uint8_t arg_0x7f41b226fe70){
+inline static bool /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__isOwner(uint8_t arg_0x7f3dd1308e70){
 #line 128
   unsigned char __nesc_result;
 #line 128
 
 #line 128
-  switch (arg_0x7f41b226fe70) {
+  switch (arg_0x7f3dd1308e70) {
 #line 128
     case /*CC2420SpiWireC.HplCC2420SpiC.SpiC*/Msp430Spi0C__0__CLIENT_ID:
 #line 128
@@ -10465,7 +10465,7 @@ inline static bool /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__i
 #line 128
     default:
 #line 128
-      __nesc_result = /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__default__isOwner(arg_0x7f41b226fe70);
+      __nesc_result = /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__default__isOwner(arg_0x7f3dd1308e70);
 #line 128
       break;
 #line 128
@@ -10507,13 +10507,13 @@ static inline msp430_spi_union_config_t */*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDma
 }
 
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/usart/Msp430SpiConfigure.nc"
-inline static msp430_spi_union_config_t */*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Msp430SpiConfigure__getConfig(uint8_t arg_0x7f41b226c110){
+inline static msp430_spi_union_config_t */*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Msp430SpiConfigure__getConfig(uint8_t arg_0x7f3dd1306110){
 #line 39
   union __nesc_unnamed4281 *__nesc_result;
 #line 39
 
 #line 39
-    __nesc_result = /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Msp430SpiConfigure__default__getConfig(arg_0x7f41b226c110);
+    __nesc_result = /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Msp430SpiConfigure__default__getConfig(arg_0x7f3dd1306110);
 #line 39
 
 #line 39
@@ -10542,9 +10542,9 @@ static inline void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceC
 }
 
 # 59 "/home/hover/tinyos-main/tos/interfaces/ResourceConfigure.nc"
-inline static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceConfigure__configure(uint8_t arg_0x7f41b20bec40){
+inline static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceConfigure__configure(uint8_t arg_0x7f3dd1157c40){
 #line 59
-  switch (arg_0x7f41b20bec40) {
+  switch (arg_0x7f3dd1157c40) {
 #line 59
     case /*CC2420SpiWireC.HplCC2420SpiC.SpiC.UsartC*/Msp430Usart0C__0__CLIENT_ID:
 #line 59
@@ -10554,7 +10554,7 @@ inline static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceC
 #line 59
     default:
 #line 59
-      /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceConfigure__default__configure(arg_0x7f41b20bec40);
+      /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceConfigure__default__configure(arg_0x7f3dd1157c40);
 #line 59
       break;
 #line 59
@@ -10583,9 +10583,9 @@ static inline void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceR
 }
 
 # 61 "/home/hover/tinyos-main/tos/interfaces/ResourceRequested.nc"
-inline static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceRequested__immediateRequested(uint8_t arg_0x7f41b20c0840){
+inline static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceRequested__immediateRequested(uint8_t arg_0x7f3dd115a840){
 #line 61
-    /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceRequested__default__immediateRequested(arg_0x7f41b20c0840);
+    /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceRequested__default__immediateRequested(arg_0x7f3dd115a840);
 #line 61
 }
 #line 61
@@ -10631,13 +10631,13 @@ static inline error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource
 }
 
 # 97 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
-inline static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__immediateRequest(uint8_t arg_0x7f41b226fe70){
+inline static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__immediateRequest(uint8_t arg_0x7f3dd1308e70){
 #line 97
   unsigned char __nesc_result;
 #line 97
 
 #line 97
-  switch (arg_0x7f41b226fe70) {
+  switch (arg_0x7f3dd1308e70) {
 #line 97
     case /*CC2420SpiWireC.HplCC2420SpiC.SpiC*/Msp430Spi0C__0__CLIENT_ID:
 #line 97
@@ -10647,7 +10647,7 @@ inline static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource
 #line 97
     default:
 #line 97
-      __nesc_result = /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__default__immediateRequest(arg_0x7f41b226fe70);
+      __nesc_result = /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__default__immediateRequest(arg_0x7f3dd1308e70);
 #line 97
       break;
 #line 97
@@ -10971,9 +10971,9 @@ static inline void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceR
 }
 
 # 53 "/home/hover/tinyos-main/tos/interfaces/ResourceRequested.nc"
-inline static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceRequested__requested(uint8_t arg_0x7f41b20c0840){
+inline static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceRequested__requested(uint8_t arg_0x7f3dd115a840){
 #line 53
-    /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceRequested__default__requested(arg_0x7f41b20c0840);
+    /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__ResourceRequested__default__requested(arg_0x7f3dd115a840);
 #line 53
 }
 #line 53
@@ -11027,13 +11027,13 @@ static inline error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource
 }
 
 # 88 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
-inline static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__request(uint8_t arg_0x7f41b226fe70){
+inline static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__request(uint8_t arg_0x7f3dd1308e70){
 #line 88
   unsigned char __nesc_result;
 #line 88
 
 #line 88
-  switch (arg_0x7f41b226fe70) {
+  switch (arg_0x7f3dd1308e70) {
 #line 88
     case /*CC2420SpiWireC.HplCC2420SpiC.SpiC*/Msp430Spi0C__0__CLIENT_ID:
 #line 88
@@ -11043,7 +11043,7 @@ inline static error_t /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource
 #line 88
     default:
 #line 88
-      __nesc_result = /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__default__request(arg_0x7f41b226fe70);
+      __nesc_result = /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__UsartResource__default__request(arg_0x7f3dd1308e70);
 #line 88
       break;
 #line 88
@@ -12112,11 +12112,11 @@ inline static bool RealMainP__Scheduler__runNextTask(void ){
 #line 65
 }
 #line 65
-# 111 "BlinkToRadioC.nc"
+# 129 "BlinkToRadioC.nc"
 static inline void BlinkToRadioC__AMSend__sendDone(message_t *msg, error_t err)
-#line 111
 {
-  if (&BlinkToRadioC__pkt == msg) {
+  if (&BlinkToRadioC__pkt == msg) 
+    {
       BlinkToRadioC__busy = FALSE;
     }
 }
@@ -12142,9 +12142,9 @@ static inline void /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__Send__default__send
 }
 
 # 100 "/home/hover/tinyos-main/tos/interfaces/Send.nc"
-inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__Send__sendDone(uint8_t arg_0x7f41b1a2e940, message_t * msg, error_t error){
+inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__Send__sendDone(uint8_t arg_0x7f3dd0ac8940, message_t * msg, error_t error){
 #line 100
-  switch (arg_0x7f41b1a2e940) {
+  switch (arg_0x7f3dd0ac8940) {
 #line 100
     case 0U:
 #line 100
@@ -12154,7 +12154,7 @@ inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__Send__sendDone(uint
 #line 100
     default:
 #line 100
-      /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__Send__default__sendDone(arg_0x7f41b1a2e940, msg, error);
+      /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__Send__default__sendDone(arg_0x7f3dd0ac8940, msg, error);
 #line 100
       break;
 #line 100
@@ -12215,13 +12215,13 @@ inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__errorTask__postT
 }
 #line 67
 # 80 "/home/hover/tinyos-main/tos/interfaces/AMSend.nc"
-inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__AMSend__send(am_id_t arg_0x7f41b1a2db60, am_addr_t addr, message_t * msg, uint8_t len){
+inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__AMSend__send(am_id_t arg_0x7f3dd0ac7b60, am_addr_t addr, message_t * msg, uint8_t len){
 #line 80
   unsigned char __nesc_result;
 #line 80
 
 #line 80
-  __nesc_result = CC2420ActiveMessageP__AMSend__send(arg_0x7f41b1a2db60, addr, msg, len);
+  __nesc_result = CC2420ActiveMessageP__AMSend__send(arg_0x7f3dd0ac7b60, addr, msg, len);
 #line 80
 
 #line 80
@@ -12520,9 +12520,9 @@ static inline void CC2420ActiveMessageP__SendNotifier__default__aboutToSend(am_i
 }
 
 # 59 "/home/hover/tinyos-main/tos/interfaces/SendNotifier.nc"
-inline static void CC2420ActiveMessageP__SendNotifier__aboutToSend(am_id_t arg_0x7f41b1af0b30, am_addr_t dest, message_t * msg){
+inline static void CC2420ActiveMessageP__SendNotifier__aboutToSend(am_id_t arg_0x7f3dd0b8ab30, am_addr_t dest, message_t * msg){
 #line 59
-    CC2420ActiveMessageP__SendNotifier__default__aboutToSend(arg_0x7f41b1af0b30, dest, msg);
+    CC2420ActiveMessageP__SendNotifier__default__aboutToSend(arg_0x7f3dd0b8ab30, dest, msg);
 #line 59
 }
 #line 59
@@ -12698,9 +12698,9 @@ message_t *msg)
 }
 
 # 95 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/RadioBackoff.nc"
-inline static void CC2420ActiveMessageP__RadioBackoff__requestCca(am_id_t arg_0x7f41b1aef700, message_t * msg){
+inline static void CC2420ActiveMessageP__RadioBackoff__requestCca(am_id_t arg_0x7f3dd0b89700, message_t * msg){
 #line 95
-    CC2420ActiveMessageP__RadioBackoff__default__requestCca(arg_0x7f41b1aef700, msg);
+    CC2420ActiveMessageP__RadioBackoff__default__requestCca(arg_0x7f3dd0b89700, msg);
 #line 95
 }
 #line 95
@@ -13231,9 +13231,9 @@ static inline void CC2420TinyosNetworkP__Resource__default__granted(uint8_t clie
 }
 
 # 102 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
-inline static void CC2420TinyosNetworkP__Resource__granted(uint8_t arg_0x7f41b1b86600){
+inline static void CC2420TinyosNetworkP__Resource__granted(uint8_t arg_0x7f3dd0c20600){
 #line 102
-  switch (arg_0x7f41b1b86600) {
+  switch (arg_0x7f3dd0c20600) {
 #line 102
     case CC2420ActiveMessageC__CC2420_AM_SEND_ID:
 #line 102
@@ -13243,7 +13243,7 @@ inline static void CC2420TinyosNetworkP__Resource__granted(uint8_t arg_0x7f41b1b
 #line 102
     default:
 #line 102
-      CC2420TinyosNetworkP__Resource__default__granted(arg_0x7f41b1b86600);
+      CC2420TinyosNetworkP__Resource__default__granted(arg_0x7f3dd0c20600);
 #line 102
       break;
 #line 102
@@ -13395,13 +13395,13 @@ static inline message_t *CC2420ActiveMessageP__Snoop__default__receive(am_id_t i
 }
 
 # 78 "/home/hover/tinyos-main/tos/interfaces/Receive.nc"
-inline static message_t * CC2420ActiveMessageP__Snoop__receive(am_id_t arg_0x7f41b1af3c40, message_t * msg, void * payload, uint8_t len){
+inline static message_t * CC2420ActiveMessageP__Snoop__receive(am_id_t arg_0x7f3dd0b8dc40, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-    __nesc_result = CC2420ActiveMessageP__Snoop__default__receive(arg_0x7f41b1af3c40, msg, payload, len);
+    __nesc_result = CC2420ActiveMessageP__Snoop__default__receive(arg_0x7f3dd0b8dc40, msg, payload, len);
 #line 78
 
 #line 78
@@ -13419,162 +13419,249 @@ static __inline  uint16_t __nesc_ntoh_uint16(const void * source)
   return ((uint16_t )base[0] << 8) | base[1];
 }
 
-static __inline  uint16_t __nesc_hton_uint16(void * target, uint16_t value)
-#line 315
+# 109 "/home/hover/tinyos-main/tos/system/LedsP.nc"
+static inline void LedsP__Leds__led2Off(void )
+#line 109
 {
-  uint8_t *base = target;
-
-#line 317
-  base[1] = value;
-  base[0] = value >> 8;
-  return value;
+  LedsP__Led2__set();
+  ;
+#line 111
+  ;
 }
 
-# 64 "/home/hover/tinyos-main/tos/lib/timer/Counter.nc"
-inline static /*HilTimerMilliC.AlarmMilli32C.Transform*/TransformAlarmC__0__Counter__size_type /*HilTimerMilliC.AlarmMilli32C.Transform*/TransformAlarmC__0__Counter__get(void ){
-#line 64
-  unsigned long __nesc_result;
-#line 64
-
-#line 64
-  __nesc_result = /*CounterMilli32C.Transform*/TransformCounterC__0__Counter__get();
-#line 64
-
-#line 64
-  return __nesc_result;
-#line 64
+# 94 "/home/hover/tinyos-main/tos/interfaces/Leds.nc"
+inline static void BlinkToRadioC__Leds__led2Off(void ){
+#line 94
+  LedsP__Leds__led2Off();
+#line 94
 }
-#line 64
-# 86 "/home/hover/tinyos-main/tos/lib/timer/TransformAlarmC.nc"
-static inline /*HilTimerMilliC.AlarmMilli32C.Transform*/TransformAlarmC__0__to_size_type /*HilTimerMilliC.AlarmMilli32C.Transform*/TransformAlarmC__0__Alarm__getNow(void )
+#line 94
+# 57 "/home/hover/tinyos-main/tos/chips/msp430/pins/HplMsp430GeneralIOP.nc"
+static inline void /*HplMsp430GeneralIOC.P56*/HplMsp430GeneralIOP__38__IO__clr(void )
+#line 57
 {
-  return /*HilTimerMilliC.AlarmMilli32C.Transform*/TransformAlarmC__0__Counter__get();
+#line 57
+  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
+#line 57
+    * (volatile uint8_t * )49U &= ~(0x01 << 6);
+#line 57
+    __nesc_atomic_end(__nesc_atomic); }
 }
 
-# 109 "/home/hover/tinyos-main/tos/lib/timer/Alarm.nc"
-inline static /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC__0__Alarm__size_type /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC__0__Alarm__getNow(void ){
-#line 109
-  unsigned long __nesc_result;
-#line 109
-
-#line 109
-  __nesc_result = /*HilTimerMilliC.AlarmMilli32C.Transform*/TransformAlarmC__0__Alarm__getNow();
-#line 109
-
-#line 109
-  return __nesc_result;
-#line 109
+# 53 "/home/hover/tinyos-main/tos/chips/msp430/pins/HplMsp430GeneralIO.nc"
+inline static void /*PlatformLedsC.Led2Impl*/Msp430GpioC__2__HplGeneralIO__clr(void ){
+#line 53
+  /*HplMsp430GeneralIOC.P56*/HplMsp430GeneralIOP__38__IO__clr();
+#line 53
 }
-#line 109
-# 96 "/home/hover/tinyos-main/tos/lib/timer/AlarmToTimerC.nc"
-static inline uint32_t /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC__0__Timer__getNow(void )
+#line 53
+# 49 "/home/hover/tinyos-main/tos/chips/msp430/pins/Msp430GpioC.nc"
+static inline void /*PlatformLedsC.Led2Impl*/Msp430GpioC__2__GeneralIO__clr(void )
+#line 49
 {
-#line 97
-  return /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC__0__Alarm__getNow();
+#line 49
+  /*PlatformLedsC.Led2Impl*/Msp430GpioC__2__HplGeneralIO__clr();
 }
 
-# 136 "/home/hover/tinyos-main/tos/lib/timer/Timer.nc"
-inline static uint32_t /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__TimerFrom__getNow(void ){
-#line 136
-  unsigned long __nesc_result;
-#line 136
-
-#line 136
-  __nesc_result = /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC__0__Timer__getNow();
-#line 136
-
-#line 136
-  return __nesc_result;
-#line 136
+# 41 "/home/hover/tinyos-main/tos/interfaces/GeneralIO.nc"
+inline static void LedsP__Led2__clr(void ){
+#line 41
+  /*PlatformLedsC.Led2Impl*/Msp430GpioC__2__GeneralIO__clr();
+#line 41
 }
-#line 136
-# 159 "/home/hover/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__startOneShot(uint8_t num, uint32_t dt)
+#line 41
+# 104 "/home/hover/tinyos-main/tos/system/LedsP.nc"
+static inline void LedsP__Leds__led2On(void )
+#line 104
 {
-  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__startTimer(num, /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__TimerFrom__getNow(), dt, TRUE);
+  LedsP__Led2__clr();
+  ;
+#line 106
+  ;
 }
 
-# 73 "/home/hover/tinyos-main/tos/lib/timer/Timer.nc"
-inline static void BlinkToRadioC__Timer0__startOneShot(uint32_t dt){
-#line 73
-  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__startOneShot(0U, dt);
-#line 73
+# 89 "/home/hover/tinyos-main/tos/interfaces/Leds.nc"
+inline static void BlinkToRadioC__Leds__led2On(void ){
+#line 89
+  LedsP__Leds__led2On();
+#line 89
 }
-#line 73
-# 125 "/home/hover/tinyos-main/tos/interfaces/Send.nc"
-inline static void * CC2420ActiveMessageP__SubSend__getPayload(message_t * msg, uint8_t len){
-#line 125
-  void *__nesc_result;
-#line 125
-
-#line 125
-  __nesc_result = CC2420TinyosNetworkP__ActiveSend__getPayload(msg, len);
-#line 125
-
-#line 125
-  return __nesc_result;
-#line 125
-}
-#line 125
-# 206 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
-static inline void *CC2420ActiveMessageP__Packet__getPayload(message_t *msg, uint8_t len)
-#line 206
+#line 89
+# 94 "/home/hover/tinyos-main/tos/system/LedsP.nc"
+static inline void LedsP__Leds__led1Off(void )
+#line 94
 {
-  return CC2420ActiveMessageP__SubSend__getPayload(msg, len);
+  LedsP__Led1__set();
+  ;
+#line 96
+  ;
 }
 
-# 126 "/home/hover/tinyos-main/tos/interfaces/Packet.nc"
-inline static void * BlinkToRadioC__Packet__getPayload(message_t * msg, uint8_t len){
-#line 126
-  void *__nesc_result;
-#line 126
-
-#line 126
-  __nesc_result = CC2420ActiveMessageP__Packet__getPayload(msg, len);
-#line 126
-
-#line 126
-  return __nesc_result;
-#line 126
+# 77 "/home/hover/tinyos-main/tos/interfaces/Leds.nc"
+inline static void BlinkToRadioC__Leds__led1Off(void ){
+#line 77
+  LedsP__Leds__led1Off();
+#line 77
 }
-#line 126
-# 117 "BlinkToRadioC.nc"
-static inline message_t *BlinkToRadioC__Receive__receive(message_t *msg, void *payload, uint8_t len)
-#line 117
+#line 77
+# 57 "/home/hover/tinyos-main/tos/chips/msp430/pins/HplMsp430GeneralIOP.nc"
+static inline void /*HplMsp430GeneralIOC.P55*/HplMsp430GeneralIOP__37__IO__clr(void )
+#line 57
 {
-  if (len == sizeof(BlinkToRadioMsg )) {
-      BlinkToRadioMsg *btrpkt = (BlinkToRadioMsg *)payload;
-      BlinkToRadioMsg *trpkt = (BlinkToRadioMsg *)BlinkToRadioC__Packet__getPayload(&BlinkToRadioC__pkt, sizeof(BlinkToRadioMsg ));
+#line 57
+  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
+#line 57
+    * (volatile uint8_t * )49U &= ~(0x01 << 5);
+#line 57
+    __nesc_atomic_end(__nesc_atomic); }
+}
 
-      if (TOS_NODE_ID == __nesc_ntoh_uint16(btrpkt->nodeid.nxdata)) {
-          __nesc_hton_uint16(trpkt->counter.nxdata, __nesc_ntoh_uint16(btrpkt->counter.nxdata) + TOS_NODE_ID);
-          __nesc_hton_uint16(trpkt->nodeid.nxdata, 1);
-          BlinkToRadioC__setLeds(__nesc_ntoh_uint16(btrpkt->counter.nxdata));
-          BlinkToRadioC__aim_node = TOS_NODE_ID - 2;
-          BlinkToRadioC__Timer0__startOneShot(3000);
-        }
-      else {
-#line 129
-        if (__nesc_ntoh_uint16(btrpkt->nodeid.nxdata) > TOS_NODE_ID) {
-            __nesc_hton_uint16(trpkt->nodeid.nxdata, __nesc_ntoh_uint16(btrpkt->nodeid.nxdata));
-            __nesc_hton_uint16(trpkt->counter.nxdata, __nesc_ntoh_uint16(btrpkt->counter.nxdata));
-            BlinkToRadioC__setLeds(__nesc_ntoh_uint16(btrpkt->nodeid.nxdata));
-            BlinkToRadioC__aim_node = TOS_NODE_ID + 2;
-            BlinkToRadioC__Timer0__startOneShot(1000);
-          }
-        else {
-#line 136
-          if (__nesc_ntoh_uint16(btrpkt->nodeid.nxdata) < TOS_NODE_ID) {
-              __nesc_hton_uint16(trpkt->nodeid.nxdata, __nesc_ntoh_uint16(btrpkt->nodeid.nxdata));
-              __nesc_hton_uint16(trpkt->counter.nxdata, __nesc_ntoh_uint16(btrpkt->counter.nxdata));
-              BlinkToRadioC__setLeds(__nesc_ntoh_uint16(btrpkt->nodeid.nxdata));
-              BlinkToRadioC__aim_node = TOS_NODE_ID - 2;
-              BlinkToRadioC__Timer0__startOneShot(1000);
-            }
-          }
-        }
+# 53 "/home/hover/tinyos-main/tos/chips/msp430/pins/HplMsp430GeneralIO.nc"
+inline static void /*PlatformLedsC.Led1Impl*/Msp430GpioC__1__HplGeneralIO__clr(void ){
+#line 53
+  /*HplMsp430GeneralIOC.P55*/HplMsp430GeneralIOP__37__IO__clr();
+#line 53
+}
+#line 53
+# 49 "/home/hover/tinyos-main/tos/chips/msp430/pins/Msp430GpioC.nc"
+static inline void /*PlatformLedsC.Led1Impl*/Msp430GpioC__1__GeneralIO__clr(void )
+#line 49
+{
+#line 49
+  /*PlatformLedsC.Led1Impl*/Msp430GpioC__1__HplGeneralIO__clr();
+}
+
+# 41 "/home/hover/tinyos-main/tos/interfaces/GeneralIO.nc"
+inline static void LedsP__Led1__clr(void ){
+#line 41
+  /*PlatformLedsC.Led1Impl*/Msp430GpioC__1__GeneralIO__clr();
+#line 41
+}
+#line 41
+# 89 "/home/hover/tinyos-main/tos/system/LedsP.nc"
+static inline void LedsP__Leds__led1On(void )
+#line 89
+{
+  LedsP__Led1__clr();
+  ;
+#line 91
+  ;
+}
+
+# 72 "/home/hover/tinyos-main/tos/interfaces/Leds.nc"
+inline static void BlinkToRadioC__Leds__led1On(void ){
+#line 72
+  LedsP__Leds__led1On();
+#line 72
+}
+#line 72
+# 79 "/home/hover/tinyos-main/tos/system/LedsP.nc"
+static inline void LedsP__Leds__led0Off(void )
+#line 79
+{
+  LedsP__Led0__set();
+  ;
+#line 81
+  ;
+}
+
+# 61 "/home/hover/tinyos-main/tos/interfaces/Leds.nc"
+inline static void BlinkToRadioC__Leds__led0Off(void ){
+#line 61
+  LedsP__Leds__led0Off();
+#line 61
+}
+#line 61
+# 57 "/home/hover/tinyos-main/tos/chips/msp430/pins/HplMsp430GeneralIOP.nc"
+static inline void /*HplMsp430GeneralIOC.P54*/HplMsp430GeneralIOP__36__IO__clr(void )
+#line 57
+{
+#line 57
+  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
+#line 57
+    * (volatile uint8_t * )49U &= ~(0x01 << 4);
+#line 57
+    __nesc_atomic_end(__nesc_atomic); }
+}
+
+# 53 "/home/hover/tinyos-main/tos/chips/msp430/pins/HplMsp430GeneralIO.nc"
+inline static void /*PlatformLedsC.Led0Impl*/Msp430GpioC__0__HplGeneralIO__clr(void ){
+#line 53
+  /*HplMsp430GeneralIOC.P54*/HplMsp430GeneralIOP__36__IO__clr();
+#line 53
+}
+#line 53
+# 49 "/home/hover/tinyos-main/tos/chips/msp430/pins/Msp430GpioC.nc"
+static inline void /*PlatformLedsC.Led0Impl*/Msp430GpioC__0__GeneralIO__clr(void )
+#line 49
+{
+#line 49
+  /*PlatformLedsC.Led0Impl*/Msp430GpioC__0__HplGeneralIO__clr();
+}
+
+# 41 "/home/hover/tinyos-main/tos/interfaces/GeneralIO.nc"
+inline static void LedsP__Led0__clr(void ){
+#line 41
+  /*PlatformLedsC.Led0Impl*/Msp430GpioC__0__GeneralIO__clr();
+#line 41
+}
+#line 41
+# 74 "/home/hover/tinyos-main/tos/system/LedsP.nc"
+static inline void LedsP__Leds__led0On(void )
+#line 74
+{
+  LedsP__Led0__clr();
+  ;
+#line 76
+  ;
+}
+
+# 56 "/home/hover/tinyos-main/tos/interfaces/Leds.nc"
+inline static void BlinkToRadioC__Leds__led0On(void ){
+#line 56
+  LedsP__Leds__led0On();
+#line 56
+}
+#line 56
+# 72 "BlinkToRadioC.nc"
+static inline void BlinkToRadioC__setLeds(uint16_t val)
+{
+  if (val & 0x01) {
+    BlinkToRadioC__Leds__led0On();
     }
-#line 144
+  else {
+#line 77
+    BlinkToRadioC__Leds__led0Off();
+    }
+#line 78
+  if (val & 0x02) {
+    BlinkToRadioC__Leds__led1On();
+    }
+  else {
+#line 81
+    BlinkToRadioC__Leds__led1Off();
+    }
+#line 82
+  if (val & 0x04) {
+    BlinkToRadioC__Leds__led2On();
+    }
+  else {
+#line 85
+    BlinkToRadioC__Leds__led2Off();
+    }
+}
+
+#line 137
+static inline message_t *BlinkToRadioC__Receive__receive(message_t *msg, void *payload, uint8_t len)
+{
+  if (len == sizeof(BlinkToRadioMsg )) 
+    {
+      BlinkToRadioMsg *btrpkt = (BlinkToRadioMsg *)payload;
+
+#line 142
+      BlinkToRadioC__setLeds(__nesc_ntoh_uint16(btrpkt->counter.nxdata));
+      BlinkToRadioC__counter = __nesc_ntoh_uint16(btrpkt->counter.nxdata);
+    }
   return msg;
 }
 
@@ -13586,13 +13673,13 @@ static inline message_t *CC2420ActiveMessageP__Receive__default__receive(am_id_t
 }
 
 # 78 "/home/hover/tinyos-main/tos/interfaces/Receive.nc"
-inline static message_t * CC2420ActiveMessageP__Receive__receive(am_id_t arg_0x7f41b1af3060, message_t * msg, void * payload, uint8_t len){
+inline static message_t * CC2420ActiveMessageP__Receive__receive(am_id_t arg_0x7f3dd0b8d060, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-  switch (arg_0x7f41b1af3060) {
+  switch (arg_0x7f3dd0b8d060) {
 #line 78
     case 6:
 #line 78
@@ -13602,7 +13689,7 @@ inline static message_t * CC2420ActiveMessageP__Receive__receive(am_id_t arg_0x7
 #line 78
     default:
 #line 78
-      __nesc_result = CC2420ActiveMessageP__Receive__default__receive(arg_0x7f41b1af3060, msg, payload, len);
+      __nesc_result = CC2420ActiveMessageP__Receive__default__receive(arg_0x7f3dd0b8d060, msg, payload, len);
 #line 78
       break;
 #line 78
@@ -14110,174 +14197,6 @@ static inline void CC2420ReceiveP__receiveDone_task__runTask(void )
   CC2420ReceiveP__waitForNextPacket();
 }
 
-# 57 "/home/hover/tinyos-main/tos/chips/msp430/pins/HplMsp430GeneralIOP.nc"
-static inline void /*HplMsp430GeneralIOC.P54*/HplMsp430GeneralIOP__36__IO__clr(void )
-#line 57
-{
-#line 57
-  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
-#line 57
-    * (volatile uint8_t * )49U &= ~(0x01 << 4);
-#line 57
-    __nesc_atomic_end(__nesc_atomic); }
-}
-
-# 53 "/home/hover/tinyos-main/tos/chips/msp430/pins/HplMsp430GeneralIO.nc"
-inline static void /*PlatformLedsC.Led0Impl*/Msp430GpioC__0__HplGeneralIO__clr(void ){
-#line 53
-  /*HplMsp430GeneralIOC.P54*/HplMsp430GeneralIOP__36__IO__clr();
-#line 53
-}
-#line 53
-# 49 "/home/hover/tinyos-main/tos/chips/msp430/pins/Msp430GpioC.nc"
-static inline void /*PlatformLedsC.Led0Impl*/Msp430GpioC__0__GeneralIO__clr(void )
-#line 49
-{
-#line 49
-  /*PlatformLedsC.Led0Impl*/Msp430GpioC__0__HplGeneralIO__clr();
-}
-
-# 41 "/home/hover/tinyos-main/tos/interfaces/GeneralIO.nc"
-inline static void LedsP__Led0__clr(void ){
-#line 41
-  /*PlatformLedsC.Led0Impl*/Msp430GpioC__0__GeneralIO__clr();
-#line 41
-}
-#line 41
-# 74 "/home/hover/tinyos-main/tos/system/LedsP.nc"
-static inline void LedsP__Leds__led0On(void )
-#line 74
-{
-  LedsP__Led0__clr();
-  ;
-#line 76
-  ;
-}
-
-# 56 "/home/hover/tinyos-main/tos/interfaces/Leds.nc"
-inline static void BlinkToRadioC__Leds__led0On(void ){
-#line 56
-  LedsP__Leds__led0On();
-#line 56
-}
-#line 56
-# 57 "/home/hover/tinyos-main/tos/chips/msp430/pins/HplMsp430GeneralIOP.nc"
-static inline void /*HplMsp430GeneralIOC.P55*/HplMsp430GeneralIOP__37__IO__clr(void )
-#line 57
-{
-#line 57
-  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
-#line 57
-    * (volatile uint8_t * )49U &= ~(0x01 << 5);
-#line 57
-    __nesc_atomic_end(__nesc_atomic); }
-}
-
-# 53 "/home/hover/tinyos-main/tos/chips/msp430/pins/HplMsp430GeneralIO.nc"
-inline static void /*PlatformLedsC.Led1Impl*/Msp430GpioC__1__HplGeneralIO__clr(void ){
-#line 53
-  /*HplMsp430GeneralIOC.P55*/HplMsp430GeneralIOP__37__IO__clr();
-#line 53
-}
-#line 53
-# 49 "/home/hover/tinyos-main/tos/chips/msp430/pins/Msp430GpioC.nc"
-static inline void /*PlatformLedsC.Led1Impl*/Msp430GpioC__1__GeneralIO__clr(void )
-#line 49
-{
-#line 49
-  /*PlatformLedsC.Led1Impl*/Msp430GpioC__1__HplGeneralIO__clr();
-}
-
-# 41 "/home/hover/tinyos-main/tos/interfaces/GeneralIO.nc"
-inline static void LedsP__Led1__clr(void ){
-#line 41
-  /*PlatformLedsC.Led1Impl*/Msp430GpioC__1__GeneralIO__clr();
-#line 41
-}
-#line 41
-# 89 "/home/hover/tinyos-main/tos/system/LedsP.nc"
-static inline void LedsP__Leds__led1On(void )
-#line 89
-{
-  LedsP__Led1__clr();
-  ;
-#line 91
-  ;
-}
-
-# 72 "/home/hover/tinyos-main/tos/interfaces/Leds.nc"
-inline static void BlinkToRadioC__Leds__led1On(void ){
-#line 72
-  LedsP__Leds__led1On();
-#line 72
-}
-#line 72
-# 57 "/home/hover/tinyos-main/tos/chips/msp430/pins/HplMsp430GeneralIOP.nc"
-static inline void /*HplMsp430GeneralIOC.P56*/HplMsp430GeneralIOP__38__IO__clr(void )
-#line 57
-{
-#line 57
-  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
-#line 57
-    * (volatile uint8_t * )49U &= ~(0x01 << 6);
-#line 57
-    __nesc_atomic_end(__nesc_atomic); }
-}
-
-# 53 "/home/hover/tinyos-main/tos/chips/msp430/pins/HplMsp430GeneralIO.nc"
-inline static void /*PlatformLedsC.Led2Impl*/Msp430GpioC__2__HplGeneralIO__clr(void ){
-#line 53
-  /*HplMsp430GeneralIOC.P56*/HplMsp430GeneralIOP__38__IO__clr();
-#line 53
-}
-#line 53
-# 49 "/home/hover/tinyos-main/tos/chips/msp430/pins/Msp430GpioC.nc"
-static inline void /*PlatformLedsC.Led2Impl*/Msp430GpioC__2__GeneralIO__clr(void )
-#line 49
-{
-#line 49
-  /*PlatformLedsC.Led2Impl*/Msp430GpioC__2__HplGeneralIO__clr();
-}
-
-# 41 "/home/hover/tinyos-main/tos/interfaces/GeneralIO.nc"
-inline static void LedsP__Led2__clr(void ){
-#line 41
-  /*PlatformLedsC.Led2Impl*/Msp430GpioC__2__GeneralIO__clr();
-#line 41
-}
-#line 41
-# 104 "/home/hover/tinyos-main/tos/system/LedsP.nc"
-static inline void LedsP__Leds__led2On(void )
-#line 104
-{
-  LedsP__Led2__clr();
-  ;
-#line 106
-  ;
-}
-
-# 89 "/home/hover/tinyos-main/tos/interfaces/Leds.nc"
-inline static void BlinkToRadioC__Leds__led2On(void ){
-#line 89
-  LedsP__Leds__led2On();
-#line 89
-}
-#line 89
-# 67 "/home/hover/tinyos-main/tos/interfaces/TaskBasic.nc"
-inline static error_t /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__updateFromTimer__postTask(void ){
-#line 67
-  unsigned char __nesc_result;
-#line 67
-
-#line 67
-  __nesc_result = SchedulerBasicP__TaskBasic__postTask(/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__updateFromTimer);
-#line 67
-
-#line 67
-  return __nesc_result;
-#line 67
-}
-#line 67
 # 178 "/home/hover/tinyos-main/tos/chips/cc2420/spi/CC2420SpiP.nc"
 static inline bool CC2420SpiP__Resource__isOwner(uint8_t id)
 #line 178
@@ -14368,9 +14287,9 @@ static inline void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Resource__defaul
 }
 
 # 102 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
-inline static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Resource__granted(uint8_t arg_0x7f41b2278e30){
+inline static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Resource__granted(uint8_t arg_0x7f3dd1311e30){
 #line 102
-  switch (arg_0x7f41b2278e30) {
+  switch (arg_0x7f3dd1311e30) {
 #line 102
     case /*CC2420SpiWireC.HplCC2420SpiC.SpiC*/Msp430Spi0C__0__CLIENT_ID:
 #line 102
@@ -14380,7 +14299,7 @@ inline static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Resource__grante
 #line 102
     default:
 #line 102
-      /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Resource__default__granted(arg_0x7f41b2278e30);
+      /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__Resource__default__granted(arg_0x7f3dd1311e30);
 #line 102
       break;
 #line 102
@@ -14402,9 +14321,9 @@ static inline void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__Resource_
 }
 
 # 102 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
-inline static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__Resource__granted(uint8_t arg_0x7f41b20c14b0){
+inline static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__Resource__granted(uint8_t arg_0x7f3dd115b4b0){
 #line 102
-  switch (arg_0x7f41b20c14b0) {
+  switch (arg_0x7f3dd115b4b0) {
 #line 102
     case /*CC2420SpiWireC.HplCC2420SpiC.SpiC.UsartC*/Msp430Usart0C__0__CLIENT_ID:
 #line 102
@@ -14414,7 +14333,7 @@ inline static void /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__Resource_
 #line 102
     default:
 #line 102
-      /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__Resource__default__granted(arg_0x7f41b20c14b0);
+      /*Msp430UsartShare0P.ArbiterC.Arbiter*/ArbiterP__0__Resource__default__granted(arg_0x7f3dd115b4b0);
 #line 102
       break;
 #line 102
@@ -14445,9 +14364,9 @@ static inline void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__SpiPacket__defau
 }
 
 # 88 "/home/hover/tinyos-main/tos/interfaces/SpiPacket.nc"
-inline static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__SpiPacket__sendDone(uint8_t arg_0x7f41b226f060, uint8_t * txBuf, uint8_t * rxBuf, uint16_t len, error_t error){
+inline static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__SpiPacket__sendDone(uint8_t arg_0x7f3dd1308060, uint8_t * txBuf, uint8_t * rxBuf, uint16_t len, error_t error){
 #line 88
-  switch (arg_0x7f41b226f060) {
+  switch (arg_0x7f3dd1308060) {
 #line 88
     case /*CC2420SpiWireC.HplCC2420SpiC.SpiC*/Msp430Spi0C__0__CLIENT_ID:
 #line 88
@@ -14457,7 +14376,7 @@ inline static void /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__SpiPacket__sendD
 #line 88
     default:
 #line 88
-      /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__SpiPacket__default__sendDone(arg_0x7f41b226f060, txBuf, rxBuf, len, error);
+      /*Msp430SpiNoDma0P.SpiP*/Msp430SpiNoDmaP__0__SpiPacket__default__sendDone(arg_0x7f3dd1308060, txBuf, rxBuf, len, error);
 #line 88
       break;
 #line 88
@@ -14991,9 +14910,9 @@ static inline void CC2420SpiP__Fifo__default__readDone(uint8_t addr, uint8_t *rx
 }
 
 # 71 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
-inline static void CC2420SpiP__Fifo__readDone(uint8_t arg_0x7f41b2376a00, uint8_t * data, uint8_t length, error_t error){
+inline static void CC2420SpiP__Fifo__readDone(uint8_t arg_0x7f3dd1410a00, uint8_t * data, uint8_t length, error_t error){
 #line 71
-  switch (arg_0x7f41b2376a00) {
+  switch (arg_0x7f3dd1410a00) {
 #line 71
     case CC2420_TXFIFO:
 #line 71
@@ -15009,7 +14928,7 @@ inline static void CC2420SpiP__Fifo__readDone(uint8_t arg_0x7f41b2376a00, uint8_
 #line 71
     default:
 #line 71
-      CC2420SpiP__Fifo__default__readDone(arg_0x7f41b2376a00, data, length, error);
+      CC2420SpiP__Fifo__default__readDone(arg_0x7f3dd1410a00, data, length, error);
 #line 71
       break;
 #line 71
@@ -15040,9 +14959,9 @@ message_t *msg)
 }
 
 # 81 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/RadioBackoff.nc"
-inline static void CC2420ActiveMessageP__RadioBackoff__requestInitialBackoff(am_id_t arg_0x7f41b1aef700, message_t * msg){
+inline static void CC2420ActiveMessageP__RadioBackoff__requestInitialBackoff(am_id_t arg_0x7f3dd0b89700, message_t * msg){
 #line 81
-    CC2420ActiveMessageP__RadioBackoff__default__requestInitialBackoff(arg_0x7f41b1aef700, msg);
+    CC2420ActiveMessageP__RadioBackoff__default__requestInitialBackoff(arg_0x7f3dd0b89700, msg);
 #line 81
 }
 #line 81
@@ -15181,9 +15100,9 @@ static inline void CC2420SpiP__Fifo__default__writeDone(uint8_t addr, uint8_t *t
 }
 
 # 91 "/home/hover/tinyos-main/tos/chips/cc2420/interfaces/CC2420Fifo.nc"
-inline static void CC2420SpiP__Fifo__writeDone(uint8_t arg_0x7f41b2376a00, uint8_t * data, uint8_t length, error_t error){
+inline static void CC2420SpiP__Fifo__writeDone(uint8_t arg_0x7f3dd1410a00, uint8_t * data, uint8_t length, error_t error){
 #line 91
-  switch (arg_0x7f41b2376a00) {
+  switch (arg_0x7f3dd1410a00) {
 #line 91
     case CC2420_TXFIFO:
 #line 91
@@ -15199,7 +15118,7 @@ inline static void CC2420SpiP__Fifo__writeDone(uint8_t arg_0x7f41b2376a00, uint8
 #line 91
     default:
 #line 91
-      CC2420SpiP__Fifo__default__writeDone(arg_0x7f41b2376a00, data, length, error);
+      CC2420SpiP__Fifo__default__writeDone(arg_0x7f3dd1410a00, data, length, error);
 #line 91
       break;
 #line 91
@@ -15750,9 +15669,9 @@ static inline void CC2420SpiP__Resource__default__granted(uint8_t id)
 }
 
 # 102 "/home/hover/tinyos-main/tos/interfaces/Resource.nc"
-inline static void CC2420SpiP__Resource__granted(uint8_t arg_0x7f41b2377660){
+inline static void CC2420SpiP__Resource__granted(uint8_t arg_0x7f3dd1411660){
 #line 102
-  switch (arg_0x7f41b2377660) {
+  switch (arg_0x7f3dd1411660) {
 #line 102
     case /*CC2420ControlC.Spi*/CC2420SpiC__0__CLIENT_ID:
 #line 102
@@ -15786,7 +15705,7 @@ inline static void CC2420SpiP__Resource__granted(uint8_t arg_0x7f41b2377660){
 #line 102
     default:
 #line 102
-      CC2420SpiP__Resource__default__granted(arg_0x7f41b2377660);
+      CC2420SpiP__Resource__default__granted(arg_0x7f3dd1411660);
 #line 102
       break;
 #line 102
@@ -15961,9 +15880,9 @@ inline static void CC2420TinyosNetworkP__BareSend__sendDone(message_t * msg, err
 }
 #line 100
 # 110 "/home/hover/tinyos-main/tos/interfaces/AMSend.nc"
-inline static void CC2420ActiveMessageP__AMSend__sendDone(am_id_t arg_0x7f41b1af8cf0, message_t * msg, error_t error){
+inline static void CC2420ActiveMessageP__AMSend__sendDone(am_id_t arg_0x7f3dd0b91cf0, message_t * msg, error_t error){
 #line 110
-  /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__AMSend__sendDone(arg_0x7f41b1af8cf0, msg, error);
+  /*AMQueueP.AMQueueImplP*/AMQueueImplP__0__AMSend__sendDone(arg_0x7f3dd0b91cf0, msg, error);
 #line 110
 }
 #line 110
@@ -16307,9 +16226,8 @@ static inline void CC2420CsmaP__sendDone_task__runTask(void )
   CC2420CsmaP__Send__sendDone(CC2420CsmaP__m_msg, packetErr);
 }
 
-# 99 "BlinkToRadioC.nc"
+# 105 "BlinkToRadioC.nc"
 static inline void BlinkToRadioC__AMControl__stopDone(error_t err)
-#line 99
 {
 }
 
@@ -16343,11 +16261,113 @@ inline static error_t BlinkToRadioC__AMControl__start(void ){
 #line 104
 }
 #line 104
+# 64 "/home/hover/tinyos-main/tos/lib/timer/Counter.nc"
+inline static /*HilTimerMilliC.AlarmMilli32C.Transform*/TransformAlarmC__0__Counter__size_type /*HilTimerMilliC.AlarmMilli32C.Transform*/TransformAlarmC__0__Counter__get(void ){
+#line 64
+  unsigned long __nesc_result;
+#line 64
+
+#line 64
+  __nesc_result = /*CounterMilli32C.Transform*/TransformCounterC__0__Counter__get();
+#line 64
+
+#line 64
+  return __nesc_result;
+#line 64
+}
+#line 64
+# 86 "/home/hover/tinyos-main/tos/lib/timer/TransformAlarmC.nc"
+static inline /*HilTimerMilliC.AlarmMilli32C.Transform*/TransformAlarmC__0__to_size_type /*HilTimerMilliC.AlarmMilli32C.Transform*/TransformAlarmC__0__Alarm__getNow(void )
+{
+  return /*HilTimerMilliC.AlarmMilli32C.Transform*/TransformAlarmC__0__Counter__get();
+}
+
+# 109 "/home/hover/tinyos-main/tos/lib/timer/Alarm.nc"
+inline static /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC__0__Alarm__size_type /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC__0__Alarm__getNow(void ){
+#line 109
+  unsigned long __nesc_result;
+#line 109
+
+#line 109
+  __nesc_result = /*HilTimerMilliC.AlarmMilli32C.Transform*/TransformAlarmC__0__Alarm__getNow();
+#line 109
+
+#line 109
+  return __nesc_result;
+#line 109
+}
+#line 109
+# 96 "/home/hover/tinyos-main/tos/lib/timer/AlarmToTimerC.nc"
+static inline uint32_t /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC__0__Timer__getNow(void )
+{
+#line 97
+  return /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC__0__Alarm__getNow();
+}
+
+# 136 "/home/hover/tinyos-main/tos/lib/timer/Timer.nc"
+inline static uint32_t /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__TimerFrom__getNow(void ){
+#line 136
+  unsigned long __nesc_result;
+#line 136
+
+#line 136
+  __nesc_result = /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC__0__Timer__getNow();
+#line 136
+
+#line 136
+  return __nesc_result;
+#line 136
+}
+#line 136
+# 67 "/home/hover/tinyos-main/tos/interfaces/TaskBasic.nc"
+inline static error_t /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__updateFromTimer__postTask(void ){
+#line 67
+  unsigned char __nesc_result;
+#line 67
+
+#line 67
+  __nesc_result = SchedulerBasicP__TaskBasic__postTask(/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__updateFromTimer);
+#line 67
+
+#line 67
+  return __nesc_result;
+#line 67
+}
+#line 67
+# 144 "/home/hover/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
+static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__startTimer(uint8_t num, uint32_t t0, uint32_t dt, bool isoneshot)
+{
+  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer_t *timer = &/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__m_timers[num];
+
+#line 147
+  timer->t0 = t0;
+  timer->dt = dt;
+  timer->isoneshot = isoneshot;
+  timer->isrunning = TRUE;
+  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__updateFromTimer__postTask();
+}
+
+static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__startPeriodic(uint8_t num, uint32_t dt)
+{
+  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__startTimer(num, /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__TimerFrom__getNow(), dt, FALSE);
+}
+
+# 64 "/home/hover/tinyos-main/tos/lib/timer/Timer.nc"
+inline static void BlinkToRadioC__Timer0__startPeriodic(uint32_t dt){
+#line 64
+  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__startPeriodic(0U, dt);
+#line 64
+}
+#line 64
 # 93 "BlinkToRadioC.nc"
 static inline void BlinkToRadioC__AMControl__startDone(error_t err)
-#line 93
 {
-  while (err != SUCCESS) {
+  if (err == SUCCESS) 
+    {
+      BlinkToRadioC__Timer0__startPeriodic(TIMER_PERIOD_MILLI);
+    }
+  else 
+    {
       BlinkToRadioC__AMControl__start();
     }
 }
@@ -16818,6 +16838,18 @@ static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__updat
     }
 }
 
+# 315 "/usr/lib/ncc/nesc_nx.h"
+static __inline  uint16_t __nesc_hton_uint16(void * target, uint16_t value)
+#line 315
+{
+  uint8_t *base = target;
+
+#line 317
+  base[1] = value;
+  base[0] = value >> 8;
+  return value;
+}
+
 # 198 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
 static inline void CC2420ActiveMessageP__Packet__setPayloadLength(message_t *msg, uint8_t len)
 #line 198
@@ -16946,73 +16978,61 @@ inline static error_t BlinkToRadioC__AMSend__send(am_addr_t addr, message_t * ms
 #line 80
 }
 #line 80
-# 109 "/home/hover/tinyos-main/tos/system/LedsP.nc"
-static inline void LedsP__Leds__led2Off(void )
-#line 109
+# 125 "/home/hover/tinyos-main/tos/interfaces/Send.nc"
+inline static void * CC2420ActiveMessageP__SubSend__getPayload(message_t * msg, uint8_t len){
+#line 125
+  void *__nesc_result;
+#line 125
+
+#line 125
+  __nesc_result = CC2420TinyosNetworkP__ActiveSend__getPayload(msg, len);
+#line 125
+
+#line 125
+  return __nesc_result;
+#line 125
+}
+#line 125
+# 206 "/home/hover/tinyos-main/tos/chips/cc2420/CC2420ActiveMessageP.nc"
+static inline void *CC2420ActiveMessageP__Packet__getPayload(message_t *msg, uint8_t len)
+#line 206
 {
-  LedsP__Led2__set();
-  ;
-#line 111
-  ;
+  return CC2420ActiveMessageP__SubSend__getPayload(msg, len);
 }
 
-# 94 "/home/hover/tinyos-main/tos/interfaces/Leds.nc"
-inline static void BlinkToRadioC__Leds__led2Off(void ){
-#line 94
-  LedsP__Leds__led2Off();
-#line 94
-}
-#line 94
-# 94 "/home/hover/tinyos-main/tos/system/LedsP.nc"
-static inline void LedsP__Leds__led1Off(void )
-#line 94
-{
-  LedsP__Led1__set();
-  ;
-#line 96
-  ;
-}
+# 126 "/home/hover/tinyos-main/tos/interfaces/Packet.nc"
+inline static void * BlinkToRadioC__Packet__getPayload(message_t * msg, uint8_t len){
+#line 126
+  void *__nesc_result;
+#line 126
 
-# 77 "/home/hover/tinyos-main/tos/interfaces/Leds.nc"
-inline static void BlinkToRadioC__Leds__led1Off(void ){
-#line 77
-  LedsP__Leds__led1Off();
-#line 77
-}
-#line 77
-# 79 "/home/hover/tinyos-main/tos/system/LedsP.nc"
-static inline void LedsP__Leds__led0Off(void )
-#line 79
-{
-  LedsP__Led0__set();
-  ;
-#line 81
-  ;
-}
+#line 126
+  __nesc_result = CC2420ActiveMessageP__Packet__getPayload(msg, len);
+#line 126
 
-# 61 "/home/hover/tinyos-main/tos/interfaces/Leds.nc"
-inline static void BlinkToRadioC__Leds__led0Off(void ){
-#line 61
-  LedsP__Leds__led0Off();
-#line 61
+#line 126
+  return __nesc_result;
+#line 126
 }
-#line 61
-# 83 "BlinkToRadioC.nc"
-static inline void BlinkToRadioC__LedsOff(void )
-#line 83
-{
-  BlinkToRadioC__Leds__led0Off();
-  BlinkToRadioC__Leds__led1Off();
-  BlinkToRadioC__Leds__led2Off();
-}
-
-#line 102
+#line 126
+# 109 "BlinkToRadioC.nc"
 static inline void BlinkToRadioC__Timer0__fired(void )
-#line 102
 {
-  if (!BlinkToRadioC__busy) {
-      BlinkToRadioC__LedsOff();
-      if (BlinkToRadioC__AMSend__send(BlinkToRadioC__aim_node, &BlinkToRadioC__pkt, sizeof(BlinkToRadioMsg )) == SUCCESS) {
+  BlinkToRadioC__counter++;
+  if (!BlinkToRadioC__busy) 
+    {
+      BlinkToRadioMsg *btrpkt = (BlinkToRadioMsg *)BlinkToRadioC__Packet__getPayload(&BlinkToRadioC__pkt, sizeof(BlinkToRadioMsg ));
+
+#line 115
+      if (btrpkt == (void *)0) 
+        {
+          return;
+        }
+      __nesc_hton_uint16(btrpkt->nodeid.nxdata, TOS_NODE_ID);
+
+      __nesc_hton_uint16(btrpkt->counter.nxdata, BlinkToRadioC__counter + 1);
+      if (BlinkToRadioC__AMSend__send(AM_BROADCAST_ADDR, &BlinkToRadioC__pkt, sizeof(BlinkToRadioMsg )) == SUCCESS) 
+        {
           BlinkToRadioC__busy = TRUE;
         }
     }
@@ -17024,9 +17044,9 @@ static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer
 }
 
 # 83 "/home/hover/tinyos-main/tos/lib/timer/Timer.nc"
-inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__fired(uint8_t arg_0x7f41b2788020){
+inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__fired(uint8_t arg_0x7f3dd1822020){
 #line 83
-  switch (arg_0x7f41b2788020) {
+  switch (arg_0x7f3dd1822020) {
 #line 83
     case 0U:
 #line 83
@@ -17036,7 +17056,7 @@ inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer
 #line 83
     default:
 #line 83
-      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__default__fired(arg_0x7f41b2788020);
+      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer__default__fired(arg_0x7f3dd1822020);
 #line 83
       break;
 #line 83
@@ -18116,9 +18136,8 @@ inline static /*BusyWaitMicroC.BusyWaitCounterC*/BusyWaitCounterC__0__Counter__s
 #line 64
 }
 #line 64
-# 89 "BlinkToRadioC.nc"
+# 88 "BlinkToRadioC.nc"
 static inline void BlinkToRadioC__Boot__booted(void )
-#line 89
 {
   BlinkToRadioC__AMControl__start();
 }
@@ -18800,9 +18819,9 @@ static inline void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Inter
 }
 
 # 54 "/home/hover/tinyos-main/tos/chips/msp430/usart/HplMsp430UsartInterrupts.nc"
-inline static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Interrupts__rxDone(uint8_t arg_0x7f41b2101cd0, uint8_t data){
+inline static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Interrupts__rxDone(uint8_t arg_0x7f3dd119bcd0, uint8_t data){
 #line 54
-  switch (arg_0x7f41b2101cd0) {
+  switch (arg_0x7f3dd119bcd0) {
 #line 54
     case /*CC2420SpiWireC.HplCC2420SpiC.SpiC.UsartC*/Msp430Usart0C__0__CLIENT_ID:
 #line 54
@@ -18812,7 +18831,7 @@ inline static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Inter
 #line 54
     default:
 #line 54
-      /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Interrupts__default__rxDone(arg_0x7f41b2101cd0, data);
+      /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Interrupts__default__rxDone(arg_0x7f3dd119bcd0, data);
 #line 54
       break;
 #line 54
@@ -18889,9 +18908,9 @@ static inline void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__I2CIn
 }
 
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/usart/HplMsp430I2CInterrupts.nc"
-inline static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__I2CInterrupts__fired(uint8_t arg_0x7f41b2100b80){
+inline static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__I2CInterrupts__fired(uint8_t arg_0x7f3dd119ab80){
 #line 39
-    /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__I2CInterrupts__default__fired(arg_0x7f41b2100b80);
+    /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__I2CInterrupts__default__fired(arg_0x7f3dd119ab80);
 #line 39
 }
 #line 39
@@ -18924,9 +18943,9 @@ static inline void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Inter
 }
 
 # 49 "/home/hover/tinyos-main/tos/chips/msp430/usart/HplMsp430UsartInterrupts.nc"
-inline static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Interrupts__txDone(uint8_t arg_0x7f41b2101cd0){
+inline static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Interrupts__txDone(uint8_t arg_0x7f3dd119bcd0){
 #line 49
-  switch (arg_0x7f41b2101cd0) {
+  switch (arg_0x7f3dd119bcd0) {
 #line 49
     case /*CC2420SpiWireC.HplCC2420SpiC.SpiC.UsartC*/Msp430Usart0C__0__CLIENT_ID:
 #line 49
@@ -18936,7 +18955,7 @@ inline static void /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Inter
 #line 49
     default:
 #line 49
-      /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Interrupts__default__txDone(arg_0x7f41b2101cd0);
+      /*Msp430UsartShare0P.UsartShareP*/Msp430UsartShareP__0__Interrupts__default__txDone(arg_0x7f3dd119bcd0);
 #line 49
       break;
 #line 49
@@ -19045,9 +19064,9 @@ static void /*Msp430TimerC.Msp430TimerB*/Msp430TimerP__1__Event__default__fired(
 }
 
 # 39 "/home/hover/tinyos-main/tos/chips/msp430/timer/Msp430TimerEvent.nc"
-static void /*Msp430TimerC.Msp430TimerB*/Msp430TimerP__1__Event__fired(uint8_t arg_0x7f41b2d158b0){
+static void /*Msp430TimerC.Msp430TimerB*/Msp430TimerP__1__Event__fired(uint8_t arg_0x7f3dd1da78b0){
 #line 39
-  switch (arg_0x7f41b2d158b0) {
+  switch (arg_0x7f3dd1da78b0) {
 #line 39
     case 0:
 #line 39
@@ -19099,7 +19118,7 @@ static void /*Msp430TimerC.Msp430TimerB*/Msp430TimerP__1__Event__fired(uint8_t a
 #line 39
     default:
 #line 39
-      /*Msp430TimerC.Msp430TimerB*/Msp430TimerP__1__Event__default__fired(arg_0x7f41b2d158b0);
+      /*Msp430TimerC.Msp430TimerB*/Msp430TimerP__1__Event__default__fired(arg_0x7f3dd1da78b0);
 #line 39
       break;
 #line 39
@@ -20081,9 +20100,9 @@ static void SchedulerBasicP__TaskBasic__default__runTask(uint8_t id)
 }
 
 # 75 "/home/hover/tinyos-main/tos/interfaces/TaskBasic.nc"
-static void SchedulerBasicP__TaskBasic__runTask(uint8_t arg_0x7f41b2e10e60){
+static void SchedulerBasicP__TaskBasic__runTask(uint8_t arg_0x7f3dd1ea3e60){
 #line 75
-  switch (arg_0x7f41b2e10e60) {
+  switch (arg_0x7f3dd1ea3e60) {
 #line 75
     case /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC__0__fired:
 #line 75
@@ -20171,7 +20190,7 @@ static void SchedulerBasicP__TaskBasic__runTask(uint8_t arg_0x7f41b2e10e60){
 #line 75
     default:
 #line 75
-      SchedulerBasicP__TaskBasic__default__runTask(arg_0x7f41b2e10e60);
+      SchedulerBasicP__TaskBasic__default__runTask(arg_0x7f3dd1ea3e60);
 #line 75
       break;
 #line 75
@@ -20482,62 +20501,6 @@ static uint16_t CC2420ControlP__CC2420Config__getShortAddr(void )
     __nesc_atomic_end(__nesc_atomic); }
 }
 
-# 94 "/home/hover/tinyos-main/tos/chips/cc2420/lowpan/CC2420TinyosNetworkP.nc"
-static void *CC2420TinyosNetworkP__ActiveSend__getPayload(message_t *msg, uint8_t len)
-#line 94
-{
-  if (len <= CC2420TinyosNetworkP__ActiveSend__maxPayloadLength()) {
-      return msg->data;
-    }
-  else 
-#line 97
-    {
-      return (void *)0;
-    }
-}
-
-# 69 "BlinkToRadioC.nc"
-static void BlinkToRadioC__setLeds(uint16_t val)
-#line 69
-{
-  if (val & 0x01) {
-    BlinkToRadioC__Leds__led0On();
-    }
-  else {
-#line 73
-    BlinkToRadioC__Leds__led0Off();
-    }
-#line 74
-  if (val & 0x02) {
-    BlinkToRadioC__Leds__led1On();
-    }
-  else {
-#line 77
-    BlinkToRadioC__Leds__led1Off();
-    }
-#line 78
-  if (val & 0x04) {
-    BlinkToRadioC__Leds__led2On();
-    }
-  else {
-#line 81
-    BlinkToRadioC__Leds__led2Off();
-    }
-}
-
-# 144 "/home/hover/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__startTimer(uint8_t num, uint32_t t0, uint32_t dt, bool isoneshot)
-{
-  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__Timer_t *timer = &/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__m_timers[num];
-
-#line 147
-  timer->t0 = t0;
-  timer->dt = dt;
-  timer->isoneshot = isoneshot;
-  timer->isrunning = TRUE;
-  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__updateFromTimer__postTask();
-}
-
 # 769 "/home/hover/tinyos-main/tos/chips/cc2420/receive/CC2420ReceiveP.nc"
 static void CC2420ReceiveP__waitForNextPacket(void )
 #line 769
@@ -20818,6 +20781,20 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__fireTimers(u
         }
     }
   /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC__0__updateFromTimer__postTask();
+}
+
+# 94 "/home/hover/tinyos-main/tos/chips/cc2420/lowpan/CC2420TinyosNetworkP.nc"
+static void *CC2420TinyosNetworkP__ActiveSend__getPayload(message_t *msg, uint8_t len)
+#line 94
+{
+  if (len <= CC2420TinyosNetworkP__ActiveSend__maxPayloadLength()) {
+      return msg->data;
+    }
+  else 
+#line 97
+    {
+      return (void *)0;
+    }
 }
 
 # 147 "/home/hover/tinyos-main/tos/lib/timer/TransformAlarmC.nc"

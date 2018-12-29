@@ -1,3 +1,9 @@
+# COMPONENT=BlinkToRadioAppC
+# PELAGS += -DCC2420_DEF_CHANNEL = 26
+
+# include $(MAKERULES)
+
+
 COMPONENT=BlinkToRadioAppC
 TOSMAKE_PRE_EXE_DEPS += BlinkToRadio.class
 TOSMAKE_CLEAN_EXTRA = *.class BlinkToRadioMsg.java
@@ -11,3 +17,4 @@ BlinkToRadioMsg.java:
 
 TINYOS_ROOT_DIR?=/home/hover/tinyos-main
 include $(TINYOS_ROOT_DIR)/Makefile.include
+
