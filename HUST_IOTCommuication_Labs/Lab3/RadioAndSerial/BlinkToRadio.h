@@ -1,3 +1,9 @@
+/* FileName:    BlinkToRadio.h
+ * Author:      Hover
+ * E-Mail:      hover@hust.edu.cn
+ * GitHub:      HoverWings
+ * Description: BlinkToRadio Program, the message head
+ */
 // $Id: BlinkToRadio.h,v 1.4 2006-12-12 18:22:52 vlahan Exp $
 
 #ifndef BLINKTORADIO_H

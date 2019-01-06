@@ -1,3 +1,10 @@
+/* FileName:    BlinkToRadioAppC.nc
+ * Author:      Hover
+ * E-Mail:      hover@hust.edu.cn
+ * GitHub:      HoverWings
+ * Description: BlinkToRadioC Program, the module configuration and implementation
+ */
+
 // $Id: BlinkToRadioC.nc,v 1.6 2010-06-29 22:07:40 scipio Exp $
 
 /*
@@ -51,135 +58,142 @@
 #include "BlinkToRadio.h"
 
 module BlinkToRadioC {
-  uses interface Boot;
-  uses interface Leds;
-  uses interface Timer<TMilli> as Timer0;
-  uses interface Timer<TMilli> as Timer1;
-  uses interface Packet;
-  uses interface AMSend;
-  uses interface Receive;
+	uses interface Boot;
+	uses interface Leds;
+	uses interface Timer<TMilli> as Timer0;
+	uses interface Timer<TMilli> as Timer1;
+	uses interface Packet;
+	uses interface AMSend;
+	uses interface Receive;
 
-  uses interface Packet as SMPacket;
-  uses interface Packet as SMPacket1;
-  uses interface AMSend as SMSend;
-  //uses interface AMSend as SMSend1;
-  uses interface Receive as SMReceive;
+	uses interface Packet as SMPacket;
+	uses interface Packet as SMPacket1;
+	uses interface AMSend as SMSend;
+	//uses interface AMSend as SMSend1;
+	uses interface Receive as SMReceive;
 
-  uses interface SplitControl as AMControl; //无线控制
-  uses interface SplitControl as SMControl; //串口控制
+	uses interface SplitControl as AMControl; //无线控制
+	uses interface SplitControl as SMControl; //串口控制
 }
 implementation {
 
-  uint16_t counter;
-  uint16_t nodeid;
-  uint16_t aim_node = 1;   
-  message_t pkt;   //数据包
-  bool busy_a = FALSE; //节点无线忙标志
+	uint16_t counter;
+	uint16_t nodeid;
+	uint16_t aim_node = 1;   
+	message_t pkt;   //数据包
+	bool busy_a = FALSE; //节点无线忙标志
 
-  //uint16_t counter_s; //发送次数
-  message_t spkt;  //数据包
-  bool busy_s = FALSE; //串口忙标志
+	//uint16_t counter_s; //发送次数
+	message_t spkt;  //数据包
+	bool busy_s = FALSE; //串口忙标志
 
-  void setLeds(uint16_t val) {
-    if (val & 0x01)
-      call Leds.led0On();
-    else 
-      call Leds.led0Off();
-    if (val & 0x02)
-      call Leds.led1On();
-    else
-      call Leds.led1Off();
-    if (val & 0x04)
-      call Leds.led2On();
-    else
-      call Leds.led2Off();
-  }
-  void LedsOff() {
-    call Leds.led0Off();
-    call Leds.led1Off();
-    call Leds.led2Off();
-  }
+	void setLeds(uint16_t val) {
+		if (val & 0x01)
+			call Leds.led0On();
+		else 
+			call Leds.led0Off();
+		if (val & 0x02)
+			call Leds.led1On();
+		else
+			call Leds.led1Off();
+		if (val & 0x04)
+			call Leds.led2On();
+		else
+			call Leds.led2Off();
+	}
+	void LedsOff() {
+		call Leds.led0Off();
+		call Leds.led1Off();
+		call Leds.led2Off();
+	}
 
-  event void Boot.booted() {
-    call AMControl.start();
-    call SMControl.start();
-  }
+	event void Boot.booted() {
+		call AMControl.start();
+		call SMControl.start();
+	}
 
-  event void AMControl.startDone(error_t err) {
-    while(err != SUCCESS) {
-      call AMControl.start();
-    }
-  }
-  event void SMControl.startDone(error_t err) {
-    while(err != SUCCESS) {
-      call SMControl.start();
-    }
-  }
+	event void AMControl.startDone(error_t err) {
+		while(err != SUCCESS) {
+			call AMControl.start();
+		}
+	}
+	event void SMControl.startDone(error_t err) {
+		while(err != SUCCESS) {
+			call SMControl.start();
+		}
+	}
 
-  event void AMControl.stopDone(error_t err) {}
-  event void SMControl.stopDone(error_t err) {}
+	event void AMControl.stopDone(error_t err) {}
+	event void SMControl.stopDone(error_t err) {}
 
 
-  event void Timer0.fired() {
-    LedsOff();
-    if(busy_s){
-    call SMSend.send(AM_BROADCAST_ADDR, &pkt, sizeof(BlinkToRadioMsg));
-    }
-  }
-  event void Timer1.fired() {
-    if(busy_a){
-    //busy_a = FALSE;
-    LedsOff();
-    call AMSend.send(3, &spkt, sizeof(BlinkToRadioMsg));
-    //call AMSend.send(AM_BROADCAST_ADDR, &pkt, sizeof(BlinkToRadioMsg));
-    }
-  }
+	event void Timer0.fired() 
+	{
+		LedsOff();
+		if(busy_s)
+		{
+			
+		}
+	}
+	event void Timer1.fired() 
+	{
+		LedsOff();
+		if(busy_a)
+		{
+		
+		}
+	}
 
-  event void AMSend.sendDone(message_t* msg, error_t err) {
-    if (&spkt == msg) {
-      busy_a = FALSE;
-    }
-  }
-  event void SMSend.sendDone(message_t* msg, error_t err) {
-    if(&pkt == msg){
-      busy_s = FALSE;
-    }
-  }
+	event void AMSend.sendDone(message_t* msg, error_t err) 
+	{
+		if (&spkt == msg) {
+			busy_a = FALSE;
+		}
+	}
+	event void SMSend.sendDone(message_t* msg, error_t err) 
+	{
+		if(&pkt == msg)
+		{
+			busy_s = FALSE;
+		}
+	}
 
-  
-  event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len){
-    if (busy_s == TRUE) return msg;
-    if (len == sizeof(BlinkToRadioMsg)) {
-      BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
-      BlinkToRadioMsg* trpkt = (BlinkToRadioMsg*)(call SMPacket.getPayload(&pkt, sizeof(BlinkToRadioMsg)));
-    
-      if(btrpkt->nodeid == TOS_NODE_ID) {
-        trpkt->counter = btrpkt->counter + TOS_NODE_ID;
-        trpkt->nodeid = btrpkt->nodeid;
-        busy_s = TRUE;
-        setLeds(btrpkt->counter);
-        call Timer0.startOneShot(3000);
-      }/*
-      else {
-        call Leds.led0On();
-        call Time2.startOneShot(1000);
-      }*/
-    }
-    return msg;
-  }
+	
+	event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len)
+    {
+		if (busy_s == TRUE) return msg;
+		if (len == sizeof(BlinkToRadioMsg)) 
+		{
+			BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
+			BlinkToRadioMsg* trpkt = (BlinkToRadioMsg*)(call SMPacket.getPayload(&pkt, sizeof(BlinkToRadioMsg)));
+			if(btrpkt->nodeid == TOS_NODE_ID) 
+			{
+				trpkt->counter = btrpkt->counter + TOS_NODE_ID;
+				trpkt->nodeid = btrpkt->nodeid;
+				busy_s = TRUE;
+				setLeds(btrpkt->counter);
+				call SMSend.send(trpkt->nodeid, &pkt, sizeof(BlinkToRadioMsg));
+				call Timer0.startOneShot(3000);
+			}
+		}
+		return msg;
+	}
 
-  event message_t* SMReceive.receive(message_t* smsg, void* payload, uint8_t len){
-    if (busy_a == TRUE) return smsg;
-    if (len == sizeof(BlinkToRadioMsg)) {
-      BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
-      BlinkToRadioMsg* trpkt = (BlinkToRadioMsg*)(call SMPacket1.getPayload(&spkt, sizeof(BlinkToRadioMsg)));      
-      trpkt->nodeid = btrpkt->nodeid;
-      trpkt->counter = btrpkt->counter;
-      setLeds(trpkt->nodeid);
-      busy_a = TRUE;
-      call Timer1.startOneShot(1000);
-    }
-    return smsg;
-  }
-  
+	event message_t* SMReceive.receive(message_t* smsg, void* payload, uint8_t len)
+    {
+		if (busy_a == TRUE) return smsg;
+		if (len == sizeof(BlinkToRadioMsg)) 
+        {
+			BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
+			BlinkToRadioMsg* trpkt = (BlinkToRadioMsg*)(call SMPacket1.getPayload(&spkt, sizeof(BlinkToRadioMsg)));      
+			trpkt->nodeid = btrpkt->nodeid;
+			trpkt->counter = btrpkt->counter;
+			setLeds(trpkt->nodeid);
+			busy_a = TRUE;
+			call AMSend.send(trpkt->nodeid, &spkt, sizeof(BlinkToRadioMsg));
+			call Timer1.startOneShot(1000);
+		}
+		return smsg;
+	}
+	
 }

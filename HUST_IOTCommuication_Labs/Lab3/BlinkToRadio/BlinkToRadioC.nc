@@ -1,3 +1,10 @@
+/* FileName:    BlinkToRadioC.nc
+ * Author:      Hover
+ * E-Mail:      hover@hust.edu.cn
+ * GitHub:      HoverWings
+ * Description: BlinkToRadio Program, the module configuration and implementation
+ */
+ 
 // $Id: BlinkToRadioC.nc,v 1.6 2010-06-29 22:07:40 scipio Exp $
 
 /*
@@ -51,96 +58,101 @@
 #include "BlinkToRadio.h"
 
 module BlinkToRadioC {
-  uses interface Boot;
-  uses interface Leds;
-  uses interface Timer<TMilli> as Timer0;
-  uses interface Packet;
-  uses interface AMPacket;
-  uses interface AMSend;
-  uses interface Receive;
-  uses interface SplitControl as AMControl;
+	uses interface Boot;
+	uses interface Leds;
+	uses interface Timer<TMilli> as Timer0;
+	uses interface Packet;
+	uses interface AMPacket;
+	uses interface AMSend;
+	uses interface Receive;
+	uses interface SplitControl as AMControl;
 }
 implementation {
-  //uint16_t counter = 0;
-  uint16_t aim_node = 1;
-  message_t pkt;
-  bool busy = FALSE;
+	//uint16_t counter = 0;
+	uint16_t aim_node = 1;
+	message_t pkt;
+	bool busy = FALSE;
 
-  void setLeds(uint16_t val) {
-    if (val & 0x01)
-      call Leds.led0On();
-    else 
-      call Leds.led0Off();
-    if (val & 0x02)
-      call Leds.led1On();
-    else
-      call Leds.led1Off();
-    if (val & 0x04)
-      call Leds.led2On();
-    else
-      call Leds.led2Off();
-  }
-  void LedsOff() {
-  	call Leds.led0Off();
-  	call Leds.led1Off();
-  	call Leds.led2Off();
-  }
+	void setLeds(uint16_t val) {
+		if (val & 0x01)
+			call Leds.led0On();
+		else 
+			call Leds.led0Off();
+		if (val & 0x02)
+			call Leds.led1On();
+		else
+			call Leds.led1Off();
+		if (val & 0x04)
+			call Leds.led2On();
+		else
+			call Leds.led2Off();
+	}
+	void LedsOff() {
+		call Leds.led0Off();
+		call Leds.led1Off();
+		call Leds.led2Off();
+	}
 
-  event void Boot.booted() {
-    call AMControl.start();
-  }
+	event void Boot.booted() {
+		call AMControl.start();
+	}
 
-  event void AMControl.startDone(error_t err) {
-    while (err != SUCCESS) {
-    	call AMControl.start();
-    }
-  }
+	event void AMControl.startDone(error_t err) {
+		while (err != SUCCESS) {
+			call AMControl.start();
+		}
+	}
 
-  event void AMControl.stopDone(error_t err) {
-  }
+	event void AMControl.stopDone(error_t err) {
+	}
 
-  event void Timer0.fired() {
-    if (!busy) {
-      LedsOff();
-      if (call AMSend.send(aim_node, &pkt, sizeof(BlinkToRadioMsg)) == SUCCESS) {
-        busy = TRUE;
-      }
-    }
-  }
+	event void Timer0.fired() {
+		if (!busy) {
+			LedsOff();
+			if (call AMSend.send(aim_node, &pkt, sizeof(BlinkToRadioMsg)) == SUCCESS) {
+				busy = TRUE;
+			}
+		}
+	}
 
-  event void AMSend.sendDone(message_t* msg, error_t err) {
-    if (&pkt == msg) {
-      busy = FALSE;
-    }
-  }
+	event void AMSend.sendDone(message_t* msg, error_t err) {
+		if (&pkt == msg) {
+			busy = FALSE;
+		}
+	}
 
-  event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len){
-    if (len == sizeof(BlinkToRadioMsg)) {
-      BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
-      BlinkToRadioMsg* trpkt = (BlinkToRadioMsg*)(call Packet.getPayload(&pkt, sizeof(BlinkToRadioMsg)));
+	event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len)
+    {
+		if (len == sizeof(BlinkToRadioMsg)) 
+        {
+			BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;
+			BlinkToRadioMsg* trpkt = (BlinkToRadioMsg*)(call Packet.getPayload(&pkt, sizeof(BlinkToRadioMsg)));
 
-      if(TOS_NODE_ID == btrpkt->nodeid) {
-      	trpkt->counter = btrpkt->counter + TOS_NODE_ID;
-      	trpkt->nodeid = 1;
-      	setLeds(btrpkt->counter);
-      	aim_node = TOS_NODE_ID - 2;
-      	call Timer0.startOneShot(3000);
-      }            
-      else if(btrpkt->nodeid > TOS_NODE_ID) {
-      	trpkt->nodeid = btrpkt->nodeid;
-      	trpkt->counter = btrpkt->counter;
-      	setLeds(btrpkt->nodeid);
-      	aim_node = TOS_NODE_ID + 2;
-      	call Timer0.startOneShot(1000);
-      }
-      else if(btrpkt->nodeid < TOS_NODE_ID) {
-      	trpkt->nodeid = btrpkt->nodeid;
-      	trpkt->counter = btrpkt->counter;
-      	setLeds(btrpkt->nodeid);
-      	aim_node = TOS_NODE_ID - 2;
-      	call Timer0.startOneShot(1000);
-      }
-    }
-    return msg;
-  }
+			if(TOS_NODE_ID == btrpkt->nodeid) 
+            {
+				trpkt->counter = btrpkt->counter + TOS_NODE_ID;
+				trpkt->nodeid = 1;
+				setLeds(btrpkt->counter);
+				aim_node = TOS_NODE_ID - 2;
+				call Timer0.startOneShot(3000);
+			}            
+			else if(btrpkt->nodeid > TOS_NODE_ID) 
+            {
+				trpkt->nodeid = btrpkt->nodeid;
+				trpkt->counter = btrpkt->counter;
+				setLeds(btrpkt->nodeid);
+				aim_node = TOS_NODE_ID + 2;
+				call Timer0.startOneShot(1000);
+			}
+			else if(btrpkt->nodeid < TOS_NODE_ID) 
+            {
+				trpkt->nodeid = btrpkt->nodeid;
+				trpkt->counter = btrpkt->counter;
+				setLeds(btrpkt->nodeid);
+				aim_node = TOS_NODE_ID - 2;
+				call Timer0.startOneShot(1000);
+			}
+		}
+		return msg;
+	}
 }

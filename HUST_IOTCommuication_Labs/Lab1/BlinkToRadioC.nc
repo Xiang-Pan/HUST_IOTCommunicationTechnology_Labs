@@ -1,3 +1,10 @@
+/* FileName:    BlinkToRadioC.nc
+ * Author:      Hover
+ * E-Mail:      hover@hust.edu.cn
+ * GitHub:      HoverWings
+ * Description: BlinkToRadio Program, the module configuration and implementation
+ */
+
 // $Id: BlinkToRadioC.nc,v 1.6 2010-06-29 22:07:40 scipio Exp $
 
 /*
