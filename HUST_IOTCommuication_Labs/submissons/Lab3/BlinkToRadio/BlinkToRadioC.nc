@@ -133,7 +133,7 @@ implementation {
 				trpkt->counter = btrpkt->counter + TOS_NODE_ID;
 				trpkt->nodeid = 1;
 				setLeds(btrpkt->counter);
-				aim_node = TOS_NODE_ID - 2;
+				aim_node = TOS_NODE_ID - 1;
 				call Timer0.startOneShot(3000);
 			}            
 			else if(btrpkt->nodeid > TOS_NODE_ID) 
@@ -141,7 +141,7 @@ implementation {
 				trpkt->nodeid = btrpkt->nodeid;
 				trpkt->counter = btrpkt->counter;
 				setLeds(btrpkt->nodeid);
-				aim_node = TOS_NODE_ID + 2;
+				aim_node = TOS_NODE_ID + 1;
 				call Timer0.startOneShot(1000);
 			}
 			else if(btrpkt->nodeid < TOS_NODE_ID) 
@@ -149,7 +149,7 @@ implementation {
 				trpkt->nodeid = btrpkt->nodeid;
 				trpkt->counter = btrpkt->counter;
 				setLeds(btrpkt->nodeid);
-				aim_node = TOS_NODE_ID - 2;
+				aim_node = TOS_NODE_ID - 1;
 				call Timer0.startOneShot(1000);
 			}
 		}
